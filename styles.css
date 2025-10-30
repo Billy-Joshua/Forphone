@@ -1,0 +1,296 @@
+/* ========================================
+   GLOBAL & RESET
+======================================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #1d1d1f;
+  background: #ffffff;
+}
+
+/* ========================================
+   CONTAINER
+======================================== */
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #d2d2d7;
+  z-index: 1000;
+  height: 48px;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1d1d1f;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav a {
+  color: #1d1d1f;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav a:hover {
+  color: #0071e3;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ========================================
+   HERO
+======================================== */
+.hero {
+  background: #f5f5f7;
+  padding: 7rem 0 5rem;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1d1d1f;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #86868b;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #0071e3;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.small-link a {
+  color: #0071e3;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   SECTIONS
+======================================== */
+.section-alt,
+.section-full {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.section-alt { background: #ffffff; }
+.section-full { background: #f5f5f7; padding: 6rem 0; }
+
+.section-alt h2,
+.section-full h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section-alt p,
+.section-full p {
+  color: #86868b;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.btn-store {
+  display: inline-block;
+  background: #000;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-outline {
+  display: inline-block;
+  background: transparent;
+  color: #1d1d1f;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid #d2d2d7;
+  border-radius: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+/* ========================================
+   APP SECTIONS
+======================================== */
+.app-section {
+  padding: 6rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.reverse {
+  direction: rtl;
+}
+
+.reverse > * {
+  direction: ltr;
+}
+
+.app-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.app-text p {
+  color: #86868b;
+  margin-bottom: 1rem;
+}
+
+.footnote {
+  font-size: 0.8rem;
+  color: #86868b;
+}
+
+.app-image img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.bg-light {
+  background: #f5f5f7;
+}
+
+/* ========================================
+   SUPPORT
+======================================== */
+.support-section {
+  padding: 5rem 0;
+  text-align: center;
+  background: #ffffff;
+}
+
+.support-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.support-section p {
+  color: #86868b;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.top-margin {
+  margin-top: 2rem;
+}
+
+/* ========================================
+   FOOTER
+======================================== */
+.site-footer {
+  background: #f5f5f7;
+  padding: 2rem 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #86868b;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+======================================== */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1rem; }
+
+  .grid, .reverse {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .nav {
+    position: fixed;
+    top: 48px; left: 0; right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid #d2d2d7;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav.active {
+    transform: translateY(0);
+  }
+
+  .nav a {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
