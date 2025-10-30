@@ -11,7 +11,10 @@
     <!-- HEADER -->
     <header class="site-header">
         <div class="container header-inner">
-            <a href="#" class="logo">ForPhone Store</a>
+            <a href="#" class="logo">
+                <img src="image/iphone17.jpg (2).jpg" alt="ForPhone Logo" style="height: 32px; vertical-align: middle; margin-right: 8px;">
+                ForPhone Store
+            </a>
             <nav class="nav">
                 <a href="#home">Home</a>
                 <a href="#products">Products</a>
@@ -19,7 +22,7 @@
                 <a href="#about">About</a>
                 <a href="#" class="cart-link">Cart (<span id="cart-count">0</span>)</a>
             </nav>
-            <button class="menu-toggle">☰</button>
+            <button class="menu-toggle">Menu</button>
         </div>
     </header>
 
@@ -43,7 +46,7 @@
                 <button class="filter-btn" data-filter="google">Google</button>
             </div>
             <div id="product-grid" class="product-grid">
-                <!-- Products will be dynamically loaded by JS -->
+                <!-- Products loaded by JS -->
             </div>
         </div>
     </section>
@@ -57,7 +60,7 @@
                 <input type="text" placeholder="Phone Model (e.g., iPhone 15)" required>
                 <input type="number" placeholder="Asking Price ($)" required>
                 <textarea placeholder="Description & Condition" required></textarea>
-                <input type="file" accept="image*" multiple>
+                <input type="file" accept="image/*" multiple>
                 <button type="submit" class="btn-primary">Submit Listing</button>
             </form>
         </div>
