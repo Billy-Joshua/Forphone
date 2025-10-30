@@ -1,119 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ForPhone</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Pure CSS -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForPhone Store - Buy & Sell Phones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">ForPhone Store</a>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#sell">Sell Phone</a>
+                <a href="#about">About</a>
+                <a href="#" class="cart-link">Cart (<span id="cart-count">0</span>)</a>
+            </nav>
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="logo">ForPhone</a>
-      <nav class="nav">
-        <a href="#music">Music</a>
-        <a href="#tv">TV</a>
-        <a href="#podcasts">Podcasts</a>
-        <a href="#support">Support</a>
-        <button class="menu-toggle">Menu</button>
-      </nav>
+    <!-- HERO/HOME -->
+    <section id="home" class="hero">
+        <div class="container text-center">
+            <h1>Discover Premium Phones</h1>
+            <p>Browse the latest smartphones or sell your old one. Fast shipping & secure checkout.</p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2>Featured Phones</h2>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Brands</button>
+                <button class="filter-btn" data-filter="apple">Apple</button>
+                <button class="filter-btn" data-filter="samsung">Samsung</button>
+                <button class="filter-btn" data-filter="google">Google</button>
+            </div>
+            <div id="product-grid" class="product-grid">
+                <!-- Products will be dynamically loaded by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SELL PHONE FORM -->
+    <section id="sell" class="sell-section">
+        <div class="container">
+            <h2>Sell Your Phone</h2>
+            <p>Submit details to list your phone for sale. We'll review and post it.</p>
+            <form id="sell-form" class="sell-form">
+                <input type="text" placeholder="Phone Model (e.g., iPhone 15)" required>
+                <input type="number" placeholder="Asking Price ($)" required>
+                <textarea placeholder="Description & Condition" required></textarea>
+                <input type="file" accept="image*" multiple>
+                <button type="submit" class="btn-primary">Submit Listing</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section">
+        <div class="container text-center">
+            <h2>About ForPhone Store</h2>
+            <p>Your one-stop shop for buying and selling premium smartphones. Secure, easy, and trusted.</p>
+        </div>
+    </section>
+
+    <!-- CART MODAL -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Your Cart</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+            <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+        </div>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-content">
-      <h1>ForPhone is going places.</h1>
-      <p>Download the latest entertainment experience. Your music, movies, TV shows, and podcasts will transfer automatically to dedicated apps.</p>
-      <a href="#" class="btn-primary">Download ForPhone for Windows</a>
-      <p class="small-link"><a href="#">Looking for Windows 32-bit? Download here</a></p>
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Address" required>
+                <input type="tel" placeholder="Phone" required>
+                <select required>
+                    <option value="">Payment Method</option>
+                    <option value="card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                <button type="submit" class="btn-primary">Complete Order</button>
+            </form>
+        </div>
     </div>
-  </section>
 
-  <!-- SECTION: MICROSOFT STORE -->
-  <section class="section-alt">
-    <div class="container">
-      <h2>Download from the Microsoft Store.</h2>
-      <p>The latest entertainment apps now come installed with the latest macOS. Upgrade today to get your favorite music, movies, TV shows, and podcasts.</p>
-      <a href="#" class="btn-store">ForPhone for Windows</a>
-      <p class="small-link"><a href="#">Looking for other versions?</a></p>
-    </div>
-  </section>
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p>&copy; <span id="year"></span> ForPhone Store. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- SECTION: ENTERTAINMENT CENTER -->
-  <section class="section-full">
-    <div class="container text-center">
-      <h2>Music, TV, and podcasts<br>take center stage.</h2>
-      <p class="large">ForPhone forever changed the way people experienced entertainment. It all changes again with three all-new, dedicated apps — each designed to be the best way to enjoy your content on your device.</p>
-    </div>
-  </section>
-
-  <!-- APPLE MUSIC -->
-  <section class="app-section" id="music">
-    <div class="container grid">
-      <div class="app-text">
-        <h2>Presenting ForPhone Music.</h2>
-        <p>The ultimate music streaming experience. Explore millions of songs, discover new artists, download and listen offline, or enjoy your personal collection.</p>
-        <p class="footnote">1</p>
-      </div>
-      <div class="app-image">
-        <img src="https://via.placeholder.com/600x400/eeeeee/999999?text=ForPhone+Music" alt="ForPhone Music">
-      </div>
-    </div>
-  </section>
-
-  <!-- APPLE TV -->
-  <section class="app-section bg-light" id="tv">
-    <div class="container grid reverse">
-      <div class="app-text">
-        <h2>ForPhone TV. Premiering now.</h2>
-        <p>The new home for movies, shows, and premium channels. Watch everything in the app or offline. Pick up where you left off on any screen.</p>
-        <p class="footnote">2 4K and Dolby Atmos supported titles available.</p>
-      </div>
-      <div class="app-image">
-        <img src="https://via.placeholder.com/600x400/eeeeee/999999?text=ForPhone+TV" alt="ForPhone TV">
-      </div>
-    </div>
-  </section>
-
-  <!-- PODCASTS -->
-  <section class="app-section" id="podcasts">
-    <div class="container grid">
-      <div class="app-text">
-        <h2>Listen up. Podcasts on ForPhone.</h2>
-        <p>Over 700,000 shows. Search by title, topic, or guest. Subscribe and get notified of new episodes. Pick up where you left off across devices.</p>
-      </div>
-      <div class="app-image">
-        <img src="https://via.placeholder.com/600x400/eeeeee/999999?text=Podcasts" alt="Podcasts">
-      </div>
-    </div>
-  </section>
-
-  <!-- SUPPORT -->
-  <section class="support-section" id="support">
-    <div class="container text-center">
-      <h2>ForPhone Support can help answer your questions</h2>
-      <p>Get help with syncing, updating, or ForPhone Store purchases — and much more.</p>
-      <a href="#" class="btn-outline">Learn more</a>
-      <p class="small-link top-margin"><a href="#">Find previous versions of ForPhone</a></p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> ForPhone. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- JS -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
