@@ -22,8 +22,7 @@ class ForPhoneStore {
             { id: 4, name: 'Samsung Galaxy S26', price: 999, brand: 'samsung', image: 'samsung-s26.jpg' },
             { id: 5, name: 'Google Pixel 10 Pro', price: 1099, brand: 'google', image: 'pixel10.jpg' },
             { id: 6, name: 'Google Pixel 10', price: 899, brand: 'google', image: 'pixel10.jpg' },
-            { id: 7, name: 'OnePlus 12 Pro', price: 899, brand: 'oneplus', image: 'oneplus12.jpg' },
-        ];
+           
 
 
         this.cart = [];
