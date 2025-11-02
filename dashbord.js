@@ -1,7 +1,3 @@
-/**
- * ForPhone Store - Full E-Commerce JavaScript
- * Now with REAL IMAGES
- */
 
 class ForPhoneStore {
     constructor() {
