@@ -225,6 +225,15 @@ class ForPhoneStore {
       this.searchQuery = e.target.value.toLowerCase();
       this.renderProducts();
     });
+    // Search Bar Scroll Effect
+window.addEventListener('scroll', () => {
+  const searchBar = document.getElementById('search-bar');
+  if (window.scrollY > 100) {
+    searchBar.classList.add('scrolled');
+  } else {
+    searchBar.classList.remove('scrolled');
+  }
+});
 
     // Dark Mode
     document.getElementById('dark-mode-toggle').addEventListener('click', () => {
