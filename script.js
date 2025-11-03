@@ -5,15 +5,14 @@
 
 class ForPhoneStore {
   constructor() {
-    this.products = [
-      { id: 1, name: 'iPhone 17 Pro Max', price: 1199, brand: 'apple', image: 'iphone17.jpg', badge: 'New' },
-      { id: 2, name: 'iPhone 17', price: 999, brand: 'apple', image: 'iphone17.jpg', badge: 'Hot' },
-      { id: 3, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Pro' },
-      { id: 4, name: 'Samsung Galaxy S26', price: 999, brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Sale' },
-      { id: 5, name: 'Google Pixel 10 Pro', price: 1099, brand: 'google', image: 'pixel10.jpg', badge: 'AI' },
-      { id: 6, name: 'Google Pixel 10', price: 899, brand: 'google', image: 'pixel10.jpg', badge: 'Best Value' },
-      { id: 7, name: 'OnePlus 12 Pro', price: 899, brand: 'oneplus', image: 'oneplus12.jpg', badge: 'Fast Charge' },
-    ];
+ this.products = [
+  { id: 1, name: 'iPhone 17 Pro Max', price: 1199, brand: 'apple', image: 'iphone17-pro-max.jpg', badge: 'New' },
+  { id: 2, name: 'iPhone 17', price: 999, brand: 'apple', image: 'iphone17.jpg', badge: 'Hot' },
+  { id: 3, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Pro' },
+  { id: 4, name: 'Samsung Galaxy S26', price: 999, brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Sale' },
+  { id: 5, name: 'Google Pixel 10 Pro', price: 1099, brand: 'google', image: 'pixel10.jpg', badge: 'AI' },
+  { id: 6, name: 'Google Pixel 10', price: 899, brand: 'google', image: 'pixel10.jpg', badge: 'Best Value' },
+];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
     this.cart = JSON.parse(localStorage.getItem('forphone_cart')) || [];
@@ -48,30 +47,39 @@ class ForPhoneStore {
   }
 
   renderProducts() {
-    const grid = document.getElementById('product-grid');
-    const filtered = this.products.filter(p =>
-      (this.currentFilter === 'all' || p.brand === this.currentFilter) &&
-      p.name.toLowerCase().includes(this.searchQuery)
-    );
+  const grid = document.getElementById('product-grid');
 
-    grid.innerHTML = filtered.map(p => `
-      <div class="product-card" data-aos="fade-up">
-        <div class="badge">${p.badge}</div>
-        <div class="product-image">
-          <img src="images/${p.image}" alt="${p.name}" loading="lazy"/>
-        </div>
-        <div class="product-info">
-          <h3>${p.name}</h3>
-          <p class="price">$${p.price}</p>
-          <button class="add-to-cart" data-id="${p.id}">
-            <i class="fas fa-cart-plus"></i> Add to Cart
-          </button>
-        </div>
-      </div>
-    `).join('') || '<p class="no-results">No phones found.</p>';
+  const filtered = this.products.filter(p =>
+    (this.currentFilter === 'all' || p.brand === this.currentFilter) &&
+    p.name.toLowerCase().includes(this.searchQuery)
+  );
 
-    this.bindAddToCart();
+  if (filtered.length === 0) {
+    grid.innerHTML = '<p class="no-results">No phones found.</p>';
+    return;
   }
+
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card" data-aos="fade-up">
+      <div class="badge">${p.badge}</div>
+      <div class="product-image">
+        <img src="images/${p.image}" 
+             alt="${p.name}" 
+             loading="lazy"
+             onerror="this.src='https://via.placeholder.com/300x300.png?text=No+Image'">
+      </div>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p class="price">$${p.price}</p>
+        <button class="add-to-cart" data-id="${p.id}">
+          <i class="fas fa-cart-plus"></i> Add to Cart
+        </button>
+      </div>
+    </div>
+  `).join('');
+
+  this.bindAddToCart();
+}
 
   renderSellForm() {
     const container = document.getElementById('sell-form-container');
