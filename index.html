@@ -1,152 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForPhone Store - Buy & Sell Phones</title>
-      <link rel="icon" type="image/jpeg" href="image/LOGO2.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ForPhone Store - Premium Phones</title>
+  <link rel="icon" href="image/LOGO2.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <!-- HEADER -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="#" class="logo">
-                <img src="image/LOGO2.jpg" alt="ForPhone Logo" style="height: 32px; vertical-align: middle; margin-right: 8px;">
-                ForPhone Store
-            </a>
-            <nav class="nav">
-                <a href="#home">Home</a>
-                <a href="#products">Products</a>
-                <a href="#sell">Sell Phone</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
-                <a href="#" class="cart-link">Cart (<span id="cart-count">0</span>)</a>
-            </nav>
-            <button class="menu-toggle">Menu</button>
-        </div>
-    </header>
 
-    <!--HOME -->
-    <section id="home" class="hero">
-        <div class="container text-center">
-            <h1>Discover Premium Phones</h1>
-            <p>Browse the latest smartphones or sell your old one. Fast shipping & secure checkout.</p>
-            <a href="#products" class="btn-primary">Shop Now</a>
-        </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products" class="products-section">
-        <div class="container">
-            <h2>Featured Phones</h2>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">All Brands</button>
-                <button class="filter-btn" data-filter="apple">Apple</button>
-                <button class="filter-btn" data-filter="samsung">Samsung</button>
-                <button class="filter-btn" data-filter="google">Google</button>
-                <button class="filter-btn" data-filter="oneplus">OnePlus</button>
-            </div>
-            <div id="product-grid" class="product-grid">
-                <!-- Products loaded by JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SELL PHONE FORM -->
-    <section id="sell" class="sell-section">
-        <div class="container">
-            <h2>Sell Your Phone</h2>
-            <p>Submit details to list your phone for sale. We'll review and post it.</p>
-            <form id="sell-form" class="sell-form">
-                <input type="text" placeholder="Phone Model (e.g., iPhone 15)" required>
-                <input type="number" placeholder="Asking Price ($)" required>
-                <textarea placeholder="Description & Condition" required></textarea>
-                <input type="file" accept="image/*" multiple>
-                <button type="submit" class="btn-primary">Submit Listing</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-        <div class="container text-center">
-            <h2>About ForPhone Store</h2>
-            <p>Your one-stop shop for buying and selling premium smartphones. Secure, easy, and trusted.</p>
-        </div>
-    </section>
-
-    <!-- CART MODAL -->
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Your Cart</h2>
-            <div id="cart-items" class="cart-items"></div>
-            <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
-            <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
-        </div>
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="image/LOGO2.jpg" alt="ForPhone"/> ForPhone
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Shop</a>
+        <a href="#sell" class="nav-link">Sell</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#" id="cart-btn" class="cart-btn">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cart-count">0</span>
+        </a>
+        <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
     </div>
+  </header>
 
-    <!-- CHECKOUT MODAL -->
-    <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Checkout</h2>
-            <form id="checkout-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="text" placeholder="Address" required>
-                <input type="tel" placeholder="Phone" required>
-                <select required>
-                    <option value="">Payment Method</option>
-                    <option value="card">Credit Card</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="cod">Cash on Delivery</option>
-                    <option value="mobilemoney">Mobile Money</option>
-                </select>
-                <button type="submit" class="btn-primary">Complete Order</button>
-            </form>
-        </div>
+  <!-- HERO -->
+  <section id="home" class="section hero">
+    <div class="container hero-content">
+      <h1>Premium Phones. <br>Reimagined.</h1>
+      <p>Buy new. Sell old. All in one trusted place.</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn-primary">Shop Now</a>
+        <a href="#sell" class="btn-secondary">Sell Your Phone</a>
+      </div>
     </div>
-<!-- CONTACT & SOCIAL MEDIA -->
-<section id="contact" class="contact-section">
+  </section>
+
+  <!-- SEARCH BAR -->
+  <div class="search-bar container">
+    <input type="text" id="search-input" placeholder="Search phones..." />
+    <i class="fas fa-search"></i>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Phones</h2>
+      <div class="filters" id="filters"></div>
+      <div id="product-grid" class="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- SELL PHONE -->
+  <section id="sell" class="section">
+    <div class="container">
+      <h2 class="section-title">Sell Your Phone</h2>
+      <p class="section-subtitle">Get instant quote. Ship free. Get paid fast.</p>
+      <div id="sell-form-container"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
     <div class="container text-center">
-        <h2>Contact Me</h2>
-        <p>Have questions? Want to sell or buy? Reach out!</p>
-
-        <!-- EMAIL -->
-        <a href="mailto:your-email@gmail.com" class="contact-link">
-            <i class="fas fa-envelope"></i> your-email@gmail.com
-        </a>
-
-        <!-- WHATSAPP -->
-        <a href="https://wa.me/1234567890" class="contact-link" target="_blank">
-            <i class="fab fa-whatsapp"></i> +250 7888 46522
-        </a>
-
-        <!-- INSTAGRAM -->
-        <a href="https://instagram.com/yourusername" class="contact-link" target="_blank">
-            <i class="fab fa-instagram"></i> @_.billy99
-            
-        </a>
-
-        <!-- FACEBOOK -->
-        <a href="https://facebook.com/yourpage" class="contact-link" target="_blank">
-            <i class="fab fa-facebook"></i> Your Page
-        </a>
-
-        <a href="https://twitter.com/yourhandle" class="contact-link" target="_blank">
-            <i class="fab fa-x-twitter"></i> @yourhandle
-        </a>
-    </div>
-</section>
-<footer class="site-footer">
-        <div class="container text-center">
-            <p>&copy; <span id="year"></span> ForPhone Store. All rights reserved.</p>
+      <h2 class="section-title">Why ForPhone?</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <h3>100% Secure</h3>
+          <p>Encrypted payments & data</p>
         </div>
-    </footer>
-    <script src="script.js"></script>
+        <div class="feature">
+          <i class="fas fa-truck"></i>
+          <h3>Free Shipping</h3>
+          <p>Both ways, always</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-dollar-sign"></i>
+          <h3>Best Price</h3>
+          <p>Guaranteed or $50 bonus</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container text-center">
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="contact-links">
+        <a href="mailto:support@forphone.com"><i class="fas fa-envelope"></i> support@forphone.com</a>
+        <a href="https://wa.me/125088846522" target="_blank"><i class="fab fa-whatsapp"></i> +250 788 846 522</a>
+        <a href="https://instagram.com/forphone" target="_blank"><i class="fab fa-instagram"></i> @forphone</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART MODAL -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Your Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
+        <button id="checkout-btn" class="btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Checkout</h2>
+      <div class="progress-steps">
+        <div class="step active">1. Info</div>
+        <div class="step">2. Payment</div>
+        <div class="step">3. Confirm</div>
+      </div>
+      <form id="checkout-form"></form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> ForPhone Store. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
