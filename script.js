@@ -1,6 +1,5 @@
 /**
- * ForPhone Store - iTunes-Inspired E-Commerce
- * Full JS Logic | Modular | Animated | Professional
+ * ForPhone Store - iTunes-Inspired E-Commerce Platform
  */
 
 class ForPhoneStore {
