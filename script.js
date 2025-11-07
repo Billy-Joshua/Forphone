@@ -14,6 +14,21 @@ class ForPhoneStore {
   { id: 6, name: 'Google Pixel 10', price: 899, brand: 'google', image: 'pixel10.jpg', badge: 'Best Value' },
   { id: 7, name: 'OnePlus 12 Pro', price: 899, brand: 'oneplus', image: 'oneplus12-pro.jpg', badge: 'Fast' },
   { id: 8, name: 'OnePlus 12', price: 699, brand: 'oneplus', image: 'oneplus12.jpg', badge: 'Affordable' },
+  {id: 9,name:'iphone 14 pro max',price:1099,Storage:'1TB',brand:'apple',image:'iphone14promax.jpg',badge:'new' },
+  {id:10,name:'iphone 14 pro',price:999,Storage:'512GB',brand:'apple',image:'iphone14pro.jpg',badge:'popular' },
+  {id:11,name:'Samsung Galaxy S23 Ultra',price:1199,Storage:'1TB',brand:'samsung',image:'samsunggalaxys23ultra.jpg',badge:'new' },
+  {id:12,name:'Samsung Galaxy S23',price:899,Storage:'512GB',brand:'samsung',image:'samsunggalaxys23.jpg',badge:'bestseller' },
+  {id:13,name:'Google Pixel 7 Pro',price:899,Storage:'512GB',brand:'google',image:'googlepixel7pro.jpg',badge:'new' },
+  {id:14,name:'Google Pixel 7',price:699,Storage:'256GB',brand:'google',image:'googlepixel7.jpg',badge:'trending' },  
+  {id:15, name: 'iphone 13 pro max', price: 999, Storage: '512GB', brand: 'apple', image: 'iphone13promax.jpg', badge: 'classic' },
+  {id:16, name: 'Samsung Galaxy S22 Ultra', price: 1099, Storage: '1TB', brand: 'samsung', image: 'samsunggalaxys22ultra.jpg', badge: 'flagship' },
+  {id:17, name: 'Google Pixel 6 Pro', price: 799, Storage: '512GB', brand: 'google', image: 'googlepixel6pro.jpg', badge: 'smart' },
+  {id:18, name: 'OnePlus 10 Pro', price: 799, Storage: '256GB', brand: 'oneplus', image: 'oneplus10pro.jpg', badge: 'speedy' },
+  {id:19, name: 'OnePlus 10', price: 599, Storage: '128GB', brand: 'oneplus', image: 'oneplus10.jpg', badge: 'value' },
+ { id: 20, name: 'iPhone SE (2022)', price: 429, Storage: '128GB', brand: 'apple', image: 'iphonese2022.jpg', badge: 'budget' },
+ { id: 21, name: 'Samsung Galaxy A54', price: 449, Storage: '128GB', brand: 'samsung', image: 'samsunggalaxya54.jpg', badge: 'affordable' },
+ { id: 22, name: 'Google Pixel 5a', price: 449, Storage: '128GB', brand: 'google', image: 'googlepixel5a.jpg', badge: 'compact' },
+ { id: 23, name: 'OnePlus Nord 2T', price: 399, Storage: '128GB', brand: 'oneplus', image: 'oneplusnord2t.jpg', badge: 'midrange' },
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
@@ -24,6 +39,7 @@ class ForPhoneStore {
 
     this.init();
   }
+
 
   init() {
     this.applyDarkMode();
