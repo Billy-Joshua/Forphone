@@ -110,22 +110,40 @@ class ForPhoneStore {
     document.getElementById('sell-images').addEventListener('change', this.handleImagePreview);
     document.getElementById('sell-form').addEventListener('submit', e => this.handleSellSubmit(e));
   }
+renderCheckoutForm() {
+  document.getElementById('checkout-form').innerHTML = `
+    <input type="text" placeholder="Full Name" required />
+    <input type="email" placeholder="Email" required />
+    <input type="text" placeholder="Shipping Address" required />
+    <input type="tel" placeholder="Phone" required />
 
-  renderCheckoutForm() {
-    document.getElementById('checkout-form').innerHTML = `
-      <input type="text" placeholder="Full Name" required />
-      <input type="email" placeholder="Email" required />
-      <input type="text" placeholder="Shipping Address" required />
-      <input type="tel" placeholder="Phone" required />
-      <select required>
-        <option value="">Payment Method</option>
-        <option>Card</option>
-        <option>PayPal</option>
-        <option>Mobile Money</option>
-      </select>
-      <button type="submit" class="btn-primary">Pay & Order</button>
-    `;
-  }
+    <div class="payment-methods">
+      <label>
+        <input type="radio" name="payment" value="card" required />
+        <img src="https://img.icons8.com/color/48/visa.png" alt="Card" />
+        Card
+      </label>
+      <label>
+        <input type="radio" name="payment" value="paypal" required />
+        <img src="https://img.icons8.com/color/48/paypal.png" alt="PayPal" />
+        PayPal
+      </label>
+      <label>
+        <input type="radio" name="payment" value="mobile" required />
+        <img src="https://img.icons8.com/color/48/smartphone.png" alt="Mobile Money" />
+        Mobile Money
+      </label>
+      <label>
+        <input type="radio" name="payment" value="bank" required />
+        <img src="https://img.icons8.com/color/48/bank.png" alt="Bank Transfer" />
+        Bank Transfer
+      </label>
+    </div>
+
+    <button type="submit" class="btn-primary">Pay & Order</button>
+  `;
+}
+
 
   // === CART ===
   addToCart(id) {
