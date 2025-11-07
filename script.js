@@ -130,8 +130,8 @@ renderCheckoutForm() {
       </label>
       <label>
         <input type="radio" name="payment" value="bank" required />
-        <img src="images/BK_LOGO.png" alt="Bank Transfer" />
-        Bank Transfer
+        <img src="images/BK_LOGO.png" alt="Bank of Kigali" />
+        Bank of Kigali
       </label>
       <label>
         <input type="radio" name="payment" value="mtn_money" required />
