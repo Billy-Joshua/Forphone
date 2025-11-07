@@ -129,14 +129,14 @@ renderCheckoutForm() {
         PayPal
       </label>
       <label>
-        <input type="radio" name="payment" value="mobile" required />
-        <img src="https://img.icons8.com/color/48/smartphone.png" alt="Mobile Money" />
-        Mobile Money
+        <input type="radio" name="payment" value="bank" required />
+        <img src="images/BK_LOGO.png" alt="Bank Transfer" />
+        Bank Transfer
       </label>
       <label>
-        <input type="radio" name="payment" value="bank" required />
-        <img src="https://img.icons8.com/color/48/bank.png" alt="Bank Transfer" />
-        Bank Transfer
+        <input type="radio" name="payment" value="mtn_money" required />
+        <img src="images/MTN LOGO.png" alt="MTN Mobile Money" />
+        MTN Mobile Money
       </label>
     </div>
 
