@@ -324,4 +324,10 @@ window.addEventListener('scroll', () => {
 // Init
 const store = new ForPhoneStore();
 window.store = store; // for console access 
-//  i may not win to day but i know my feture is greeat i may not be rich now but i will be rich one day life is hard now im even not amang good developers but one  day ill be the one its take time i know but thought my god and my work hard its only the matter of trainer one day ill do it and do it again and again in jesus name i ask and i pray for it amen 
+//  i may not win to day but I know my future is great
+//  i may not be rich now but i will be rich one day.
+//  life is hard now im even not amang good developers
+//  but one  day ill be the one its take time i know but thought my god
+//  and my work hard its only the matter of trainer
+//  one day ill do it and do it again and again
+//  in jesus name i ask and i pray for it amen 
