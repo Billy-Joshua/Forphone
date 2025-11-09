@@ -13,7 +13,6 @@ class ForPhoneStore {
   { id: 5, name: 'Google Pixel 10 Pro', price: 1099, brand: 'google', image: 'pixel10.jpg', badge: 'AI' },
   { id: 6, name: 'Google Pixel 10', price: 899, brand: 'google', image: 'pixel10.jpg', badge: 'Best Value' },
   { id: 7, name: 'OnePlus 12 Pro', price: 899, brand: 'oneplus', image: 'oneplus12-pro.jpg', badge: 'Fast' },
-  { id: 8, name: 'OnePlus 12', price: 699, brand: 'oneplus', image: 'oneplus12.jpg', badge: 'Affordable' }, 
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
