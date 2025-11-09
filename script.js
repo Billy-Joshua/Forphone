@@ -83,7 +83,7 @@ class ForPhoneStore {
 
   this.bindAddToCart();
 }
-
+ 
   renderSellForm() {
     const container = document.getElementById('sell-form-container');
     container.innerHTML = `
@@ -344,6 +344,6 @@ window.addEventListener('scroll', () => {
 
 // Init
 const store = new ForPhoneStore();
-window.store = store; // for console access 
+window.store = store; 
 
 
