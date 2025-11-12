@@ -17,6 +17,20 @@ class ForPhoneStore {
   { id: 9, name: 'Samsung Galaxy S25 Ultra', price: 1199, brand: 'samsung', image: 'samsung-galaxy-s25-ultra.jpg', badge: 'New Arrival' },
   { id: 10, name: 'Google Pixel 9 Pro', price: 999, brand: 'google', image: 'google-pixel-9-pro.jpg', badge: 'Top Rated' },
   { id: 11, name: 'OnePlus 11 Pro', price: 799, brand: 'oneplus', image: 'oneplus-11-pro.jpg', badge: 'Value Pick' },
+  { id: 12, name: 'iPhone 16 Pro', price: 1000, brand: 'apple', image: 'iphone16-pro.jpg', badge: 'Bestseller' },     
+  { id: 13, name: 'Samsung Galaxy S25', price: 899, brand: 'samsung', image: 'samsung-galaxy-s25.jpg', badge: 'Trending' },
+  { id: 14, name: 'Google Pixel 9', price: 799, brand: 'google', image: 'google-pixel-9.jpg', badge: 'Customer Favorite' },
+  { id: 15, name: 'OnePlus 11', price: 699, brand: 'oneplus', image: 'oneplus-11.jpg', badge: 'Hot Deal' }, 
+  { id: 16, name: 'iPhone SE (2024)', price: 499, brand: 'apple', image: 'iphone-se-2024.jpg', badge: 'Affordable' },
+  { id: 17, name: 'Samsung Galaxy A14', price: 299, brand: 'samsung', image: 'samsung-galaxy-a14.jpg', badge: 'Budget' },
+  { id: 18, name: 'Google Pixel 8a', price: 399, brand: 'google', image: 'google-pixel-8a.jpg', badge: 'Value' },
+  { id: 19, name: 'OnePlus Nord N300', price: 249, brand: 'oneplus', image: 'oneplus-nord-n300.jpg', badge: 'Entry Level' },
+  { id: 20, name: 'iPhone 15 Pro Max', price: 1099, brand: 'apple', image: 'iphone15-pro-max.jpg', badge: 'new' },
+  { id: 21, name: 'iPhone 15 Pro', price: 899, brand: 'apple', image: 'iphone15-pro.jpg', badge: 'Hot' },
+  { id: 22, name: 'Samsung Galaxy S24 Ultra', price: 1199, brand: 'samsung', image: 'samsung-s24-ultra.jpg', badge: 'Pro' },
+  { id: 23, name: 'Samsung Galaxy S24', price: 899, brand: 'samsung', image: 'samsung-s24.jpg', badge: 'Sale' },
+  { id: 24, name: 'Google Pixel 8 Pro', price: 999, brand: 'google', image: 'pixel8-pro.jpg', badge: 'AI' },
+  { id: 25, name: 'Google Pixel 8', price: 799, brand: 'google', image: 'pixel8.jpg', badge: 'Best Value' },
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
