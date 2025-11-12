@@ -38,6 +38,7 @@ class ForPhoneStore {
     this.currentFilter = 'all';
     this.searchQuery = '';
     this.darkMode = localStorage.getItem('darkMode') === 'true';
+    this.darkMode = this.darkMode !== null ? this.darkMode : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     this.init();
   }
