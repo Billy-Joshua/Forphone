@@ -36,7 +36,10 @@ class ForPhoneStore {
   { id: 28, name: 'iPhone 14 Pro Max', price: 999, brand: 'apple', image: 'iphone14-pro-max.jpg', badge: 'Bestseller' },
   { id: 29, name: 'Samsung Galaxy S23 Ultra', price: 1099, brand: 'samsung', image: 'samsung-galaxy-s23-ultra.jpg', badge: 'New Arrival' },
   { id: 30, name: 'Google Pixel 7 Pro', price: 899, brand: 'google', image: 'google-pixel-7-pro.jpg', badge: 'Top Rated' },
-  { id: 31, name: 'OnePlus 9 Pro', price: 699, brand: 'oneplus', image: 'oneplus-9-pro.jpg', badge: 'Value Pick' }
+  { id: 31, name: 'OnePlus 9 Pro', price: 699, brand: 'oneplus', image: 'oneplus-9-pro.jpg', badge: 'Value Pick' },
+  { id: 32, name: 'iPhone 14 Pro', price: 799, brand: 'apple', image: 'iphone14-pro.jpg', badge: 'Trending' },
+  { id: 33, name: 'Samsung Galaxy S23', price: 899, brand: 'samsung', image: 'samsung-galaxy-s23.jpg', badge: 'Customer Favorite' },
+  { id: 34, name: 'Google Pixel 7', price: 699, brand: 'google', image: 'google-pixel-7.jpg', badge: 'Hot Deal' },
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
