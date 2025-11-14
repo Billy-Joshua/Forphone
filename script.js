@@ -5,7 +5,7 @@
 class ForPhoneStore {
   constructor() {
  this.products = [
-  { id: 1, name: 'iPhone 17 Pro Max', price: 1199, Storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: 'new' },
+  { id: 1, name: 'iPhone 17 Pro Max', price: 1199, Storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: '-50%' },
   { id: 2, name: 'iPhone 17 Pro', price: 999, brand: 'apple', image: 'iphone17.jpg', badge: 'Hot' },
   { id: 2, name: 'iPhone Air', price: 999, Storage: '512GB', brand: 'apple', image: 'iphone air.jpg', badge: 'new' },
   { id: 3, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Pro' },
@@ -373,4 +373,4 @@ window.addEventListener('scroll', () => {
 const store = new ForPhoneStore();
 window.store = store; 
 
-
+// THIS IS MY FOOTER CODE
