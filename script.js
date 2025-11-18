@@ -373,4 +373,3 @@ window.addEventListener('scroll', () => {
 const store = new ForPhoneStore();
 window.store = store; 
 
-// THIS IS MY FOOTER CODE
