@@ -58,6 +58,9 @@ class ForPhoneStore {
   { id: 50, name: 'Google Pixel 4a', price: 499, brand: 'google', image: 'google-pixel-4a.jpg', badge: 'Value' },
   { id: 51, name: 'OnePlus Nord', price: 399, brand: 'oneplus', image: 'oneplus-nord.jpg', badge: 'Trendy' },
   { id: 52, name: 'iPhone 11 Pro Max', price: 699, brand: 'apple', image: 'iphone11-pro-max.jpg', badge: 'Classic' },
+  { id: 53, name: 'Samsung Galaxy S20 Ultra', price: 899, brand: 'samsung', image: 'samsung-galaxy-s20-ultra.jpg', badge: 'Flagship' },
+  { id: 54, name: 'Google Pixel 4 XL', price: 599, brand: 'google', image: 'google-pixel-4-xl.jpg', badge: 'Innovative' },
+  { id: 55, name: 'OnePlus 6T', price: 499, brand: 'oneplus', image: 'oneplus-6t.jpg', badge: 'Sleek' },
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
