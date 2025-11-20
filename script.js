@@ -7,6 +7,7 @@ class ForPhoneStore {
  this.products = [
   { id: 1, name: 'iPhone 17 Pro Max', price: 1199, Storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: '-50%' },
   { id: 2, name: 'iPhone 17 Pro', price: 999, brand: 'apple', image: 'iphone17.jpg', badge: 'Hot' },
+  { id: i3, name: 'iPhone 16 Pro', price: 899, brand: 'apple', image: 'iphone16-pro.jpg', badge: 'Bestseller' },
   { id: 2, name: 'iPhone Air', price: 999, Storage: '512GB', brand: 'apple', image: 'iphone air.jpg', badge: 'new' },
   { id: 3, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Pro' },
   { id: 4, name: 'Samsung Galaxy S26', price: 999, brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Sale' },
