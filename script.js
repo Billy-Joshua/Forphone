@@ -12,6 +12,7 @@ class ForPhoneStore {
   { id: i3, name: 'iPhone 16 Pro Max', price: 1099, brand: 'apple', image: 'iphone16-pro.jpg', badge: 'Bestseller' },
   { id: 4, name: 'iPhone 16 Pro', price: 899, brand: 'apple', image: 'iphone16-pro.jpg', badge: 'Bestseller' },
   { id: 5, name: 'iPhone Air', price: 999, Storage: '512GB', brand: 'apple', image: 'iphone air.jpg', badge: 'new' },
+  { id: 41, name: 'iPhone 16', price: 699, brand: 'apple', image: 'iphone16.jpg', badge: 'Popular' }, 
   { id: 6, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Pro' },
   { id: 7, name: 'Samsung Galaxy S26', price: 999, brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Sale' },
   { id: 8, name: 'Google Pixel 10 Pro', price: 1099, brand: 'google', image: 'pixel10.jpg', badge: 'AI' },
