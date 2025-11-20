@@ -46,6 +46,9 @@ class ForPhoneStore {
   { id: 38, name: 'Google Pixel 6 Pro', price: 799, brand: 'google', image: 'google-pixel-6-pro.jpg', badge: 'Innovative' },
   { id: 39, name: 'OnePlus 8 Pro', price: 599, brand: 'oneplus', image: 'oneplus-8-pro.jpg', badge: 'Sleek' },
   { id: 40, name: 'iPhone 13 Pro', price: 699, brand: 'apple', image: 'iphone13-pro.jpg', badge: 'Reliable' }, 
+  { id: 41, name: 'Samsung Galaxy S22', price: 799, brand: 'samsung', image: 'samsung-galaxy-s22.jpg', badge: 'Efficient' },
+  { id: 42, name: 'Google Pixel 6', price: 599, brand: 'google', image: 'google-pixel-6.jpg', badge: 'Smart' },
+  { id: 43, name: 'OnePlus 8', price: 499, brand: 'oneplus', image: 'oneplus-8.jpg', badge: 'Affordable' }
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
