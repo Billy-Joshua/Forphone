@@ -369,7 +369,6 @@ window.addEventListener('scroll', () => {
     document.querySelectorAll('section[id]').forEach(sec => observer.observe(sec));
   }
 }
-
 // Init
 const store = new ForPhoneStore();
 window.store = store; 
