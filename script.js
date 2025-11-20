@@ -48,7 +48,16 @@ class ForPhoneStore {
   { id: 40, name: 'iPhone 13 Pro', price: 699, brand: 'apple', image: 'iphone13-pro.jpg', badge: 'Reliable' }, 
   { id: 41, name: 'Samsung Galaxy S22', price: 799, brand: 'samsung', image: 'samsung-galaxy-s22.jpg', badge: 'Efficient' },
   { id: 42, name: 'Google Pixel 6', price: 599, brand: 'google', image: 'google-pixel-6.jpg', badge: 'Smart' },
-  { id: 43, name: 'OnePlus 8', price: 499, brand: 'oneplus', image: 'oneplus-8.jpg', badge: 'Affordable' }
+  { id: 43, name: 'OnePlus 8', price: 499, brand: 'oneplus', image: 'oneplus-8.jpg', badge: 'Affordable' },
+  { id: 44, name: 'iPhone 12 Pro Max', price: 799, brand: 'apple', image: 'iphone12-pro-max.jpg', badge: 'Durable' },
+  { id: 45, name: 'Samsung Galaxy S21 Ultra', price: 899, brand: 'samsung', image: 'samsung-galaxy-s21-ultra.jpg', badge: 'Powerful' },
+  { id: 46, name: 'Google Pixel 5', price: 699, brand: 'google', image: 'google-pixel-5.jpg', badge: 'Compact' },
+  { id: 47, name: 'OnePlus 7 Pro', price: 499, brand: 'oneplus', image: 'oneplus-7-pro.jpg', badge: 'Smooth' },
+  { id: 48, name: 'iPhone 12 Pro', price: 699, brand: 'apple', image: 'iphone12-pro.jpg', badge: 'Stylish' },
+  { id: 49, name: 'Samsung Galaxy S21', price: 799, brand: 'samsung', image: 'samsung-galaxy-s21.jpg', badge: 'Versatile' },
+  { id: 50, name: 'Google Pixel 4a', price: 499, brand: 'google', image: 'google-pixel-4a.jpg', badge: 'Value' },
+  { id: 51, name: 'OnePlus Nord', price: 399, brand: 'oneplus', image: 'oneplus-nord.jpg', badge: 'Trendy' },
+  { id: 52, name: 'iPhone 11 Pro Max', price: 699, brand: 'apple', image: 'iphone11-pro-max.jpg', badge: 'Classic' },
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
