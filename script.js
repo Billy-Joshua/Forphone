@@ -44,7 +44,9 @@ class ForPhoneStore {
   { id: 36,name: 'iPhone 13 Mini', price: 599, brand: 'apple', image: 'iphone13-mini.jpg', badge: 'Compact' },
   { id: 37, name: 'Samsung Galaxy Z Flip 5', price: 999, brand: 'samsung', image: 'samsung-galaxy-z-flip-5.jpg', badge: 'Foldable' },
   { id: 38, name: 'Google Pixel Fold', price: 1799, brand: 'google', image: 'google-pixel-fold.jpg', badge: 'Innovative' },
-  { id: 39, name: 'OnePlus Ace Pro', price: 749, brand: 'oneplus', image: 'oneplus-ace-pro.jpg', badge: 'Performance' }
+  { id: 39, name: 'OnePlus Ace Pro', price: 749, brand: 'oneplus', image: 'oneplus-ace-pro.jpg', badge: 'Performance' },
+  { id: 40, name: 'iPhone 13 Pro Max', price: 899, brand: 'apple', image: 'iphone13-pro-max.jpg', badge: 'Durable' }, 
+  
 ];
 
     this.brands = [...new Set(this.products.map(p => p.brand))];
