@@ -329,7 +329,6 @@ window.addEventListener('scroll', () => {
     document.body.appendChild(n);
     setTimeout(() => n.remove(), 3000);
   }
-
   handleImagePreview(e) {
     const preview = document.getElementById('image-preview');
     preview.innerHTML = '';
