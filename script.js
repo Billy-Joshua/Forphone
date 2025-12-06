@@ -1,5 +1,5 @@
 /**
- * ForPhone Store - iTunes-Inspired E-Commerce Platform
+ * ForPhone Store  E-Commerce Platform
  */
 
 class ForPhoneStore {
