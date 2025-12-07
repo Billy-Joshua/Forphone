@@ -1,5 +1,5 @@
 /**
- * ForPhone Store  E-Commerce Platform
+ * F  E-Commerce Platform
  */
 
 class ForPhoneStore {
