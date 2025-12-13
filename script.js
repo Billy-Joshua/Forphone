@@ -55,6 +55,11 @@ class ForPhoneStore {
   { id: 48, name: 'iPhone 12 Mini', price: 499, brand: 'apple', image: 'iphone12-mini.jpg', badge: 'Compact' },
   { id: 49, name: 'Samsung Galaxy Z Fold 3', price: 1799, brand: 'samsung', image: 'samsung-galaxy-z-fold-3.jpg', badge: 'Foldable' },
   { id: 50, name: 'Google Pixel 5a', price: 449, brand: 'google', image: 'google-pixel-5a.jpg', badge: 'Affordable' },
+  { id: 51, name: 'OnePlus Nord', price: 399, brand: 'oneplus', image: 'oneplus-nord.jpg', badge: 'Value' },
+  { id: 52, name: 'iPhone 12 Pro Max', price: 899, brand: 'apple', image: 'iphone12-pro-max.jpg', badge: 'Durable' },
+  { id: 53, name: 'Samsung Galaxy S21 Ultra', price: 1199, brand: 'samsung', image: 'samsung-galaxy-s21-ultra.jpg', badge: 'New Arrival' },
+  { id: 54, name: 'Google Pixel 5', price: 699, brand: 'google', image: 'google-pixel-5.jpg', badge: 'Top Rated' },
+  { id: 55, name: 'OnePlus 7 Pro', price: 599, brand: 'oneplus', image: 'oneplus-7-pro.jpg', badge: 'Value Pick' },
   
 ];
 
