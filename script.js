@@ -45,6 +45,16 @@ class ForPhoneStore {
   { id: 38, name: 'Google Pixel Fold', price: 1799, brand: 'google', image: 'google-pixel-fold.jpg', badge: 'Innovative' },
   { id: 39, name: 'OnePlus Ace Pro', price: 749, brand: 'oneplus', image: 'oneplus-ace-pro.jpg', badge: 'Performance' },
   { id: 40, name: 'iPhone 13 Pro Max', price: 899, brand: 'apple', image: 'iphone13-pro-max.jpg', badge: 'Durable' },
+  { id: 41, name: 'Samsung Galaxy Note 20 Ultra', price: 1199, brand: 'samsung', image: 'samsung-galaxy-note-20-ultra.jpg', badge: 'Productive' },
+  { id: 42, name: 'Google Pixel 6 Pro', price: 899, brand: 'google', image: 'google-pixel-6-pro.jpg', badge: 'Smart' },
+  { id: 43, name: 'OnePlus 8 Pro', price: 699, brand: 'oneplus', image: 'oneplus-8-pro.jpg', badge: 'Sleek' },
+  { id: 44, name: 'iPhone 13 Pro', price: 799, brand: 'apple', image: 'iphone13-pro.jpg', badge: 'Stylish' },
+  { id: 45, name: 'Samsung Galaxy Note 20', price: 999, brand: 'samsung', image: 'samsung-galaxy-note-20.jpg', badge: 'Versatile' },
+  { id: 46, name: 'Google Pixel 6', price: 699, brand: 'google', image: 'google-pixel-6.jpg', badge: 'Efficient' },
+  { id: 47, name: 'OnePlus 8', price: 599, brand: 'oneplus', image: 'oneplus-8.jpg', badge: 'Reliable' },
+  { id: 48, name: 'iPhone 12 Mini', price: 499, brand: 'apple', image: 'iphone12-mini.jpg', badge: 'Compact' },
+  { id: 49, name: 'Samsung Galaxy Z Fold 3', price: 1799, brand: 'samsung', image: 'samsung-galaxy-z-fold-3.jpg', badge: 'Foldable' },
+  { id: 50, name: 'Google Pixel 5a', price: 449, brand: 'google', image: 'google-pixel-5a.jpg', badge: 'Affordable' },
   
 ];
 
