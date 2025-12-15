@@ -63,8 +63,12 @@ class ForPhoneStore {
   { id: 56, name: 'iPhone 12 Pro', price: 799, brand: 'apple', image: 'iphone12-pro.jpg', badge: 'Trending' },
   { id: 57, name: 'Samsung Galaxy S21', price: 899, brand: 'samsung', image: 'samsung-galaxy-s21.jpg', badge: 'Customer Favorite' },
   { id: 58, name: 'Google Pixel 4a', price: 499, brand: 'google', image: 'google-pixel-4a.jpg', badge: 'Hot Deal' },
-  { id: 59, name: 'OnePlus 7', price: 499, brand: 'oneplus', image: 'oneplus-7.jpg', badge: 'Popular' },  
-  
+  { id: 59, name: 'OnePlus 7', price: 499, brand: 'oneplus', image: 'oneplus-7.jpg', badge: 'Popular' }, 
+  { id: 60, name: 'iPhone SE (2020)', price: 399, brand: 'apple', image: 'iphone-se-2020.jpg', badge: 'Budget' },
+  { id: 61, name: 'Samsung Galaxy A51', price: 299, brand: 'samsung', image: 'samsung-galaxy-a51.jpg', badge: 'Affordable' },
+  { id: 62, name: 'Google Pixel 4a 5G', price: 499, brand: 'google', image: 'google-pixel-4a-5g.jpg', badge: 'Value' },
+  { id: 63, name: 'OnePlus Nord N10', price: 349, brand: 'oneplus', image: 'oneplus-nord-n10.jpg', badge: 'Entry Level' }, 
+
   
 ];
 
