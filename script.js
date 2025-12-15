@@ -60,6 +60,11 @@ class ForPhoneStore {
   { id: 53, name: 'Samsung Galaxy S21 Ultra', price: 1199, brand: 'samsung', image: 'samsung-galaxy-s21-ultra.jpg', badge: 'New Arrival' },
   { id: 54, name: 'Google Pixel 5', price: 699, brand: 'google', image: 'google-pixel-5.jpg', badge: 'Top Rated' },
   { id: 55, name: 'OnePlus 7 Pro', price: 599, brand: 'oneplus', image: 'oneplus-7-pro.jpg', badge: 'Value Pick' },
+  { id: 56, name: 'iPhone 12 Pro', price: 799, brand: 'apple', image: 'iphone12-pro.jpg', badge: 'Trending' },
+  { id: 57, name: 'Samsung Galaxy S21', price: 899, brand: 'samsung', image: 'samsung-galaxy-s21.jpg', badge: 'Customer Favorite' },
+  { id: 58, name: 'Google Pixel 4a', price: 499, brand: 'google', image: 'google-pixel-4a.jpg', badge: 'Hot Deal' },
+  { id: 59, name: 'OnePlus 7', price: 499, brand: 'oneplus', image: 'oneplus-7.jpg', badge: 'Popular' },  
+  
   
 ];
 
