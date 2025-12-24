@@ -345,10 +345,3 @@ img { max-width: 100%; display: block; }
   .section { padding: 2rem; }
   .modal-content { padding: 2rem; }
 }
-
-@media (max-width: 480px) {
-  .logo { font-size: 1.3rem; }
-  .product-summary h1 { font-size: 1.9rem; }
-  .price { font-size: 1.8rem; }
-  .btn-add-to-cart { width: 100%; }
-}
