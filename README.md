@@ -29,6 +29,4 @@ Live Demo: [https://yourname-forphone.netlify.app](https://yourname-forphone.net
 - **Google Fonts** (`Inter`)
 - **LocalStorage** (Cart persistence)
 
----
-
 ## Project Structure
