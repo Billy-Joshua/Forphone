@@ -339,9 +339,4 @@ img { max-width: 100%; display: block; }
   .product-summary h1 { font-size: 2.2rem; }
 }
 
-@media (max-width: 768px) {
-  .nav { gap: 1.2rem; }
-  .nav a { font-size: 0.9rem; }
-  .section { padding: 2rem; }
-  .modal-content { padding: 2rem; }
-}
+
