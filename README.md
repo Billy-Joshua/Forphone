@@ -2,7 +2,7 @@
 
 A **modern, responsive e-commerce website** to **buy and sell premium smartphones** — built with **pure HTML, CSS, and JavaScript** (no frameworks).
 
-Live Demo: [https://yourname-forphone.netlify.app](https://yourname-forphone.netlify.app) *(comming soon...)*
+Live Demo: [https://yourname-forphone.netlify.app](https://yourname-forphone.netlify.app) 
 
 ---
 
