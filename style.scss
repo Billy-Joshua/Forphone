@@ -276,7 +276,7 @@ img { max-width: 100%; display: block; }
     position: absolute;
     top: 1.2rem;
     right: 1.5rem;
-    font-size: 1.8rem;
+    font-siz4 e: 1.8rem;
     color: #86868b;
     cursor: pointer;
     width: 36px;
@@ -338,5 +338,15 @@ img { max-width: 100%; display: block; }
   }
   .product-summary h1 { font-size: 2.2rem; }
 }
+@media (max-width: 576px) {
+  .site-header .nav {
+    gap: 1.5rem;
+  }
+  .site-header .nav a {
+    font-size: 0.9rem;
+  }
+}
+// End of style.scss
+ 
 
 

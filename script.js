@@ -1,11 +1,11 @@
 /**
- * F  E-Commerce Platform
+ * F  Estore.rw Platform
  */
 
 class ForPhoneStore {
   constructor() {
  this.products = [
-  { id: 1, name: 'iPhone 17 Pro Max', price: 1199, Storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: '-50%' },
+  { id: 1, name: 'iPhone 17 Pro Max', price: 1199, Storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: '-30' },
   { id: 2, name: 'iPhone 17 Pro', price: 999, brand: 'apple', image: 'iphone17.jpg', badge: 'Hot' },
   { id: 3, name: 'iPhone Air', price: 999, Storage: '512GB', brand: 'apple', image: 'iphone air.jpg', badge: 'new' },
   { id: 4, name: 'Samsung Galaxy S26 Ultra', price: 1299, brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Pro' },
@@ -68,6 +68,8 @@ class ForPhoneStore {
   { id: 61, name: 'Samsung Galaxy A51', price: 299, brand: 'samsung', image: 'samsung-galaxy-a51.jpg', badge: 'Affordable' },
   { id: 62, name: 'Google Pixel 4a 5G', price: 499, brand: 'google', image: 'google-pixel-4a-5g.jpg', badge: 'Value' },
   { id: 63, name: 'OnePlus Nord N10', price: 349, brand: 'oneplus', image: 'oneplus-nord-n10.jpg', badge: 'Entry Level' }, 
+  { id: 64, name: 'iphone 11 pro', price: 550 , brand: 'apple', image: 'iphone-11'}
+
 
   
 ];
