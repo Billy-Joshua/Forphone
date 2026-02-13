@@ -876,3 +876,17 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', () => {
     window.forPhoneStore = new ForPhoneStore();
 });
+
+// Fallback initialization if DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!window.forPhoneStore) {
+            window.forPhoneStore = new ForPhoneStore();
+        }
+    });
+} else {
+    // DOM is already loaded
+    if (!window.forPhoneStore) {
+        window.forPhoneStore = new ForPhoneStore();
+    }
+}
