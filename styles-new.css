@@ -137,7 +137,7 @@ form button[type="submit"]:hover {
 }
 
 /* Search Bar */
-.search-bar { padding:2rem 0; background:rgba(0,0,0,'0.8); border-bottom:1px solid #333333; position:sticky; top:80px; z-index:999; }
+.search-bar { padding:2rem 0; background:rgba(0,0,0,'0.8); text-align:center; } 
 .search-bar input { width:100%; padding:16px 55px 16px 25px; border:1px solid #404040; border-radius:8px; font-size:1.1rem; background:rgba(255,255,255,0.05); color:#d0d0d0; transition:.3s; }
 .search-bar input::placeholder { color:#808080; }
 .search-bar input:focus { box-shadow:0 0 15px rgba(74, 158, 255, 0.3); border-color:#4a9eff; background:rgba(255,255,255,0.08); }

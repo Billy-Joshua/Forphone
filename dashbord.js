@@ -21,8 +21,8 @@ class ForPhoneStore {
         };
 
         this.products = [
-            { id: 1, name: 'iPhone 17 Pro Max', price: 1199000, brand: 'apple', image: 'iphone17-pro-max.jpg', stock: 5 },
-            { id: 2, name: 'iPhone 17', price: 999000, brand: 'apple', image: 'iphone17.jpg', stock: 8 },
+            { id: 1, name: 'iPhone 17 Pro Max', price: 1199000, brand: 'apple', image: 'iphone17-pro-max.jpeg', stock: 5 },
+            { id: 2, name: 'iPhone 17', price: 999000, brand: 'apple', image: 'iphone17.jpeg', stock: 8 },
             { id: 3, name: 'Samsung Galaxy S26 Ultra', price: 1299000, brand: 'samsung', image: 'samsung-s26-ultra.jpg', stock: 3 },
             { id: 4, name: 'Samsung Galaxy S26', price: 999000, brand: 'samsung', image: 'samsung-s26.jpg', stock: 6 },
             { id: 5, name: 'Google Pixel 10 Pro', price: 1099000, brand: 'google', image: 'pixel10.jpg', stock: 4 },
@@ -38,9 +38,7 @@ class ForPhoneStore {
             { id: 15, name: 'Samsung Galaxy S24 Ultra', price: 699000, brand: 'samsung', image: 'samsung-s24-ultra.jpg', stock: 10 },
             { id: 16, name: 'Samsung Galaxy S24', price: 499000, brand: 'samsung', image: 'samsung-s24.jpg', stock: 18 },
         ];
-
-        this.cart = [];
-        this.listings = [];
+       this.listings = [];
         this.currentFilter = 'all';
 
         this.init();
