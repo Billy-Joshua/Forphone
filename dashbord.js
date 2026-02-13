@@ -90,16 +90,26 @@ class ForPhoneStore {
             }, 100);
         }
     }
+updateCartUI() {
+    const cart = Array.isArray(this.cart) ? this.cart : [];
 
-    updateCartUI() {
-        const totalItems = this.cart.reduce((sum, item) => sum + item.qty, 0);
-        const cartCountEl = document.querySelector(this.selectors.cartCount);
-        if (cartCountEl) {
-            cartCountEl.textContent = totalItems;
-            cartCountEl.style.display = totalItems > 0 ? 'flex' : 'none';
-        }
-        this.renderCartModal();
+    const total = cart.length > 0
+        ? cart.reduce((sum, item) => sum + (item.price || 0), 0)
+        : 0;
+
+    const cartTotalEl = document.getElementById("cart-total");
+    if (cartTotalEl) {
+        cartTotalEl.textContent = "RWF " + total.toLocaleString();
     }
+
+    const cartItemsEl = document.getElementById("cart-items");
+    if (cartItemsEl) {
+        cartItemsEl.innerHTML = cart.map(item => `
+            <li>${item.name} - RWF ${item.price.toLocaleString()}</li>
+        `).join("");
+    }
+}
+
 
     renderFilters() {
         const brands = ['all', ...new Set(this.products.map(p => p.brand))];
