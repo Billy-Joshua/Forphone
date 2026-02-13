@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>   EstoreRW - Premium Phones</title>
+  <title>EstoreRW - Premium Phones in Rwanda</title>
+  <meta name="description" content="Buy and sell premium smartphones in Rwanda. Secure payments via Mobile Money, free shipping, and best prices guaranteed.">
+  <meta name="keywords" content="phones Rwanda, buy iPhone Kigali, sell Samsung Rwanda, premium smartphones, estore.rw">
+  <meta property="og:title" content="EstoreRW - Premium Phones">
+  <meta property="og:description" content="Trusted platform for buying and selling phones in Rwanda with Mobile Money integration.">
+  <meta property="og:image" content="images/bland.jpg">
+  <meta property="og:url" content="https://estore.rw">
+  <link rel="canonical" href="https://estore.rw">
   <link rel="icon" href="images/bland.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="login-checkout-styles.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script> <!-- Add your GA tracking ID -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXX-X');
+  </script>
 </head>
 <body>
 
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <img src="images/bland.jpg" alt="ForPhone"/> estore.rw
+        <img src="images/bland.jpg" alt="EstoreRW Logo" loading="lazy"/> estore.rw
       </a>
       <nav class="nav" id="nav">
         <a href="#home" class="nav-link">Home</a>
@@ -26,6 +41,7 @@
           <i class="fas fa-shopping-cart"></i>
           <span id="cart-count">0</span>
         </a>
+        <a href="#" id="login-btn" class="nav-link"><i class="fas fa-user"></i> Login</a>
         <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
       </nav>
       <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
@@ -35,8 +51,8 @@
   <!-- HERO -->
   <section id="home" class="section hero">
     <div class="container hero-content">
-      <h1>Premium Phones. <br>Reimagined.</h1>
-      <p>Buy new. Sell old. All in one trusted place.</p>
+      <h1>Premium Phones in Rwanda. <br>Reimagined.</h1>
+      <p>Buy new, sell old. Secure Mobile Money payments, free shipping.</p>
       <div class="hero-buttons">
         <a href="#products" class="btn-primary">Shop Now</a>
         <a href="#sell" class="btn-secondary">Sell Your Phone</a>
@@ -44,20 +60,21 @@
     </div>
   </section>
 
- <div class="search-bar" id="search-bar">
-  <div class="container">
-    <div class="search-container">
-      <input type="text" id="search-input" placeholder="Search phones, brands..." />
-      <i class="fas fa-search"></i>
+  <div class="search-bar" id="search-bar">
+    <div class="container">
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search phones, brands in Rwanda..." />
+        <i class="fas fa-search"></i>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- PRODUCTS -->
   <section id="products" class="section">
     <div class="container">
-      <h2 class="section-title">Featured Phones</h2>
+      <h2 class="section-title">Featured Phones in Rwanda</h2>
       <div class="filters" id="filters"></div>
+      <div id="recommendations" class="recommendations"></div> <!-- AI Recommendations Section -->
       <div id="product-grid" class="product-grid"></div>
     </div>
   </section>
@@ -65,8 +82,8 @@
   <!-- SELL PHONE -->
   <section id="sell" class="section">
     <div class="container">
-      <h2 class="section-title">Sell Your Phone</h2>
-      <p class="section-subtitle">Get instant quote. Ship free. Get paid fast.</p>
+      <h2 class="section-title">Sell Your Phone in Rwanda</h2>
+      <p class="section-subtitle">Instant quote, free shipping, fast Mobile Money payment.</p>
       <div id="sell-form-container"></div>
     </div>
   </section>
@@ -74,8 +91,8 @@
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="container text-center">
-      <h2 class="section-title">Why ForPhone?</h2>
-      <div class="features-grid">
+      <h2 class="section-title">Why EstoreRW?</h2>
+      <div class="features-grid">o
         <div class="feature">
           <i class="fas fa-shield-alt"></i>
           <h3>100% Secure</h3>
@@ -84,13 +101,63 @@
         <div class="feature">
           <i class="fas fa-truck"></i>
           <h3>Free Shipping</h3>
-          <p>Both ways, always</p>
+          <p>Nationwide in Rwanda</p>
         </div>
         <div class="feature">
           <i class="fas fa-dollar-sign"></i>
           <h3>Best Price</h3>
-          <p>Guaranteed or $50 bonus</p>
+          <p>Guaranteed or RWF bonus</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(255,0,255,0.1) 100%);">
+    <div class="container">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonials-grid">
+        <article class="testimonial" role="article">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: #00ffcc; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">JP</div>
+            <div>
+              <h4 style="color: #00ffcc;">Jean Pierre</h4>
+              <p style="font-size: 0.9rem; color: #aaa;">Kigali</p>
+            </div>
+          </div>
+          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+            "EstoreRW is fantastic! Got my iPhone 17 Pro delivered within 48 hours. Crystal clear communication and fair pricing!"
+          </p>
+          <div style="color: #ffff00;">★★★★★</div>
+        </article>
+
+        <article class="testimonial" role="article">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: #ff00ff; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">MC</div>
+            <div>
+              <h4 style="color: #ff00ff;">Marie Claire</h4>
+              <p style="font-size: 0.9rem; color: #aaa;">Butare</p>
+            </div>
+          </div>
+          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+            "Sold my old phone and got paid via Mobile Money instantly. The whole process was seamless and transparent."
+          </p>
+          <div style="color: #ffff00;">★★★★★</div>
+        </article>
+
+        <article class="testimonial" role="article">
+          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+            <div style="width: 50px; height: 50px; border-radius: 50%; background: #00ffcc; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">DM</div>
+            <div>
+              <h4 style="color: #00ffcc;">David Mugisha</h4>
+              <p style="font-size: 0.9rem; color: #aaa;">Gisenyi</p>
+            </div>
+          </div>
+          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+            "Best prices compared to other stores. Customer service team is responsive and helpful. Highly recommended!"
+          </p>
+          <div style="color: #ffff00;">★★★★★</div>
+        </article>
       </div>
     </div>
   </section>
@@ -100,46 +167,631 @@
     <div class="container text-center">
       <h2 class="section-title">Get in Touch</h2>
       <div class="contact-links">
-        <a href="mailto:billyjoshuaishimwe@corenestconsulting.com"><i class="fas fa-envelope"></i> ForPhone@gmail.com</a>
+        <a href="mailto:billyjoshuaishimwe@corenestconsulting.com"><i class="fas fa-envelope"></i> estore@gmail.com</a>
         <a href="https://wa.me/250788544811" target="_blank"><i class="fab fa-whatsapp"></i> +250 788544811</a>
-        <a href="https://www.instagram.com/_.fp99?igsh=bXNsYWp1Z2tqMTky&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> @forphone</a>
+        <a href="https://www.instagram.com/_.fp99?igsh=bXNsYWp1Z2tqMTky&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> @estore.rw</a>
       </div>
     </div>
   </section>
 
-  <!-- CART MODAL -->
+  <!-- FAQ SECTION -->
+  <section class="section" style="background: rgba(0,255,204,0.05);">
+    <div class="container" style="max-width: 800px;">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div style="display: grid; gap: 1.5rem;">
+        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
+          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+            How long does delivery take? <i class="fas fa-chevron-down"></i>
+          </summary>
+          <p style="margin-top: 1rem; color: #cccccc;">Standard delivery within Kigali takes 24-48 hours. Other provinces take 3-5 business days.</p>
+        </details>
+        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
+          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+            What payment methods do you accept? <i class="fas fa-chevron-down"></i>
+          </summary>
+          <p style="margin-top: 1rem; color: #cccccc;">We accept Mobile Money (MTN, Airtel), Bank transfers, and Cash on Delivery.</p>
+        </details>
+        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
+          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+            Do you offer warranty? <i class="fas fa-chevron-down"></i>
+          </summary>
+          <p style="margin-top: 1rem; color: #cccccc;">All phones come with a 30-day money-back guarantee. Extended warranties available.</p>
+        </details>
+        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
+          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+            How do I sell my phone? <i class="fas fa-chevron-down"></i>
+          </summary>
+          <p style="margin-top: 1rem; color: #cccccc;">Fill out the "Sell Your Phone" form with your phone's details. We'll give you an instant quote. If you accept, we handle pickup and payment.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART MODAL - IMPROVED -->
   <div id="cart-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content cart-modal-content">
       <span class="close">&times;</span>
-      <h2>Your Cart</h2>
-      <div id="cart-items"></div>
-      <div class="cart-footer">
-        <div class="cart-total">Total: $<span id="cart-total">0.00</span></div>
-        <button id="checkout-btn" class="btn-primary">Checkout</button>
+      
+      <div class="cart-container">
+        <div class="cart-header">
+          <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+          <p id="cart-item-count">0 items</p>
+        </div>
+
+        <div id="cart-items" class="cart-items-list"></div>
+
+        <div class="cart-section">
+          <!-- Promo Code -->
+          <div class="promo-section">
+            <input 
+              type="text" 
+              id="promo-code" 
+              placeholder="Enter promo code" 
+              class="promo-input"
+            />
+            <button type="button" id="apply-promo" class="btn-promo">
+              <i class="fas fa-tag"></i> Apply
+            </button>
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="cart-summary">
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span>RWF <span id="subtotal">0.00</span></span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping:</span>
+              <span>RWF <span id="shipping">0.00</span></span>
+            </div>
+            <div class="summary-row discount" id="discount-row" style="display: none;">
+              <span>Discount:</span>
+              <span>-RWF <span id="discount-amount">0.00</span></span>
+            </div>
+            <div class="summary-row total">
+              <span>Total:</span>
+              <span>RWF <span id="cart-total">0.00</span></span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="cart-actions">
+            <button type="button" id="continue-shopping" class="btn-secondary">
+              <i class="fas fa-arrow-left"></i> Continue Shopping
+            </button>
+            <button type="button" id="checkout-btn" class="btn-primary">
+              <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- CHECKOUT MODAL -->
+  <!-- CHECKOUT MODAL - IMPROVED WITH PAYMENTS -->
   <div id="checkout-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content checkout-modal-content">
       <span class="close">&times;</span>
-      <h2>Checkout</h2>
-      <div class="progress-steps">
-        <div class="step active">1. Info</div>
-        <div class="step">2. Payment</div>
-        <div class="step">3. Confirm</div>
+      
+      <div class="checkout-container">
+        <!-- Progress Steps -->
+        <div class="checkout-progress">
+          <div class="progress-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Shipping</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Payment</div>
+          </div>
+          <div class="progress-line"></div>
+          <div class="progress-step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">Confirm</div>
+          </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <form id="checkout-form" class="checkout-form">
+          <!-- Step 1: Shipping Information -->
+          <div class="checkout-step active" data-step="1">
+            <h3>Shipping Information</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="full-name">Full Name *</label>
+                <input 
+                  type="text" 
+                  id="full-name" 
+                  placeholder="Your full name" 
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  placeholder="+250 (0)788 000 000" 
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  placeholder="your@email.com" 
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="city">City *</label>
+                <input 
+                  type="text" 
+                  id="city" 
+                  placeholder="Kigali" 
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Street Address *</label>
+              <input 
+                type="text" 
+                id="address" 
+                placeholder="123 Main Street" 
+                required
+              />
+            </div>
+
+            <!-- Shipping Method -->
+            <div class="shipping-methods">
+              <h4>Shipping Method</h4>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="standard" checked />
+                <span class="option-label">
+                  <span class="option-name">Standard Delivery</span>
+                  <span class="option-price">RWF 5,000</span>
+                </span>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="express" />
+                <span class="option-label">
+                  <span class="option-name">Express Delivery</span>
+                  <span class="option-price">RWF 10,000</span>
+                </span>
+              </label>
+              <label class="shipping-option">
+                <input type="radio" name="shipping" value="pickup" />
+                <span class="option-label">
+                  <span class="option-name">Store Pickup</span>
+                  <span class="option-price">Free</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-secondary" onclick="store.goToCheckoutStep(1)">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="button" class="btn-primary" onclick="store.goToCheckoutStep(2)">
+                Next: Payment <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Payment Method -->
+          <div class="checkout-step" data-step="2">
+            <h3>Choose Payment Method</h3>
+            
+            <div class="payment-methods-grid">
+              <!-- MTN Mobile Money -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="mtn" required />
+                <div class="payment-card">
+                  <i class="fas fa-mobile-alt"></i>
+                  <h4>MTN Mobile Money</h4>
+                  <p>Pay via MTN</p>
+                </div>
+              </label>
+
+              <!-- Airtel Money -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="airtel" />
+                <div class="payment-card">
+                  <i class="fas fa-phone"></i>
+                  <h4>Airtel Money</h4>
+                  <p>Pay via Airtel</p>
+                </div>
+              </label>
+
+              <!-- Bank of Kigali -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="bank" />
+                <div class="payment-card">
+                  <i class="fas fa-university"></i>
+                  <h4>Bank of Kigali</h4>
+                  <p>Bank Transfer</p>
+                </div>
+              </label>
+
+              <!-- PayPal -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="paypal" />
+                <div class="payment-card">
+                  <i class="fab fa-paypal"></i>
+                  <h4>PayPal</h4>
+                  <p>International Card</p>
+                </div>
+              </label>
+
+              <!-- Cash on Delivery -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="cod" />
+                <div class="payment-card">
+                  <i class="fas fa-hand-holding-usd"></i>
+                  <h4>Cash on Delivery</h4>
+                  <p>Pay when you receive</p>
+                </div>
+              </label>
+
+              <!-- Bitcoin -->
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="crypto" />
+                <div class="payment-card">
+                  <i class="fab fa-bitcoin"></i>
+                  <h4>Bitcoin</h4>
+                  <p>Cryptocurrency</p>
+                </div>
+              </label>
+            </div>
+
+            <!-- Payment Details (shown based on selected method) -->
+            <div id="payment-details" class="payment-details"></div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-secondary" onclick="store.goToCheckoutStep(1)">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="button" class="btn-primary" onclick="store.goToCheckoutStep(3)">
+                Review Order <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Order Review & Confirmation -->
+          <div class="checkout-step" data-step="3">
+            <h3>Review Your Order</h3>
+            
+            <div class="order-review">
+              <!-- Shipping Summary -->
+              <div class="review-section">
+                <h4><i class="fas fa-box"></i> Shipping Details</h4>
+                <div class="review-content">
+                  <p id="review-name">Name: Loading...</p>
+                  <p id="review-address">Address: Loading...</p>
+                  <p id="review-phone">Phone: Loading...</p>
+                </div>
+              </div>
+
+              <!-- Items Summary -->
+              <div class="review-section">
+                <h4><i class="fas fa-list"></i> Order Items</h4>
+                <div class="review-content">
+                  <div id="review-items"></div>
+                </div>
+              </div>
+
+              <!-- Price Summary -->
+              <div class="review-section">
+                <h4><i class="fas fa-receipt"></i> Payment Summary</h4>
+                <div class="review-content">
+                  <div class="review-row">
+                    <span>Subtotal:</span>
+                    <span>RWF <span id="review-subtotal">0.00</span></span>
+                  </div>
+                  <div class="review-row">
+                    <span>Shipping:</span>
+                    <span>RWF <span id="review-shipping">0.00</span></span>
+                  </div>
+                  <div class="review-row final">
+                    <span>Total Amount:</span>
+                    <span>RWF <span id="review-total">0.00</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terms & Conditions -->
+              <label class="checkbox-group">
+                <input type="checkbox" id="agree-terms" required />
+                <span>I agree to the Terms and Conditions</span>
+              </label>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn-secondary" onclick="store.goToCheckoutStep(2)">
+                <i class="fas fa-arrow-left"></i> Back
+              </button>
+              <button type="submit" class="btn-success">
+                <i class="fas fa-check-circle"></i> Complete Purchase
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <form id="checkout-form"></form>
     </div>
   </div>
+
+  <!-- LOGIN MODAL -->
+  <!-- LOGIN MODAL - IMPROVED DESIGN -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content login-modal-content">
+      <span class="close">&times;</span>
+      
+      <div class="login-container">
+        <!-- Login Header -->
+        <div class="login-header">
+          <h2>Welcome Back</h2>
+          <p>Sign in to your account</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="login-form">
+          <!-- Email Input -->
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input 
+                type="email" 
+                id="login-email"
+                placeholder="Enter your email" 
+                required 
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input 
+                type="password" 
+                id="login-password"
+                placeholder="Enter your password" 
+                required 
+                autocomplete="current-password"
+              />
+            </div>
+          </div>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="login-options">
+            <label class="checkbox-group">
+              <input type="checkbox" id="remember-me" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </div>
+
+          <!-- Login Button -->
+          <button type="submit" class="btn-login">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+          </button>
+        </form>
+
+        <!-- Demo Credentials -->
+        <div class="demo-credentials">
+          <p class="demo-title">📌 Demo Account</p>
+          <div class="credential-item">
+            <span>Email:</span>
+            <code>test@estore.rw</code>
+          </div>
+          <div class="credential-item">
+            <span>Password:</span>
+            <code>test123</code>
+          </div>
+        </div>
+
+        <!-- Register Link -->
+        <div class="login-footer">
+          <p>Don't have an account? 
+            <a href="#" id="register-link" class="register-link">Create one now</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER MODAL - PROFESSIONAL FORM -->
+  <div id="register-modal" class="modal">
+    <div class="modal-content register-modal-content">
+      <span class="close">&times;</span>
+      
+      <div class="register-container">
+        <div class="register-header">
+          <h2><i class="fas fa-user-plus"></i> Create Your Account</h2>
+          <p>Join us today and start shopping</p>
+        </div>
+
+        <form id="register-form" class="register-form">
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="register-name">Full Name *</label>
+            <div class="input-wrapper">
+              <i class="fas fa-user"></i>
+              <input 
+                type="text" 
+                id="register-name"
+                placeholder="John Doe"
+                required 
+                aria-label="Full name"
+              />
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="register-email">Email Address *</label>
+            <div class="input-wrapper">
+              <i class="fas fa-envelope"></i>
+              <input 
+                type="email" 
+                id="register-email"
+                placeholder="john@example.com"
+                required 
+                aria-label="Email address"
+              />
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+            <label for="register-phone">Phone Number *</label>
+            <div class="input-wrapper">
+              <i class="fas fa-phone"></i>
+              <input 
+                type="tel" 
+                id="register-phone"
+                placeholder="+250792123456"
+                required 
+                aria-label="Phone number"
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="register-password">Password *</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input 
+                type="password" 
+                id="register-password"
+                placeholder="Min 8 characters"
+                minlength="8"
+                required 
+                aria-label="Password"
+              />
+            </div>
+            <div class="password-strength">
+              <div class="strength-bar" id="strength-bar"></div>
+              <span id="strength-text">Weak</span>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label for="register-confirm">Confirm Password *</label>
+            <div class="input-wrapper">
+              <i class="fas fa-lock"></i>
+              <input 
+                type="password" 
+                id="register-confirm"
+                placeholder="Confirm password"
+                required 
+                aria-label="Confirm password"
+              />
+            </div>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-group checkbox">
+            <input 
+              type="checkbox" 
+              id="register-terms"
+              required 
+              aria-label="Agree to terms"
+            />
+            <label for="register-terms">I agree to the Terms and Conditions</label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary btn-register">
+            <i class="fas fa-check"></i> Create Account
+          </button>
+
+          <!-- Link to Login -->
+          <p class="register-footer">
+            Already have an account? <a href="#" id="login-from-register" class="register-link">Sign in here</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD MODAL -->
+  <div id="admin-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2><i class="fas fa-cog"></i> Admin Dashboard</h2>
+      
+      <div class="admin-info">
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-products">16</div>
+          <div class="admin-stat-label">Total Products</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-cart-count">0</div>
+          <div class="admin-stat-label">Items in Cart</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-users">1</div>
+          <div class="admin-stat-label">Registered Users</div>
+        </div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-brands">5</div>
+          <div class="admin-stat-label">Active Brands</div>
+        </div>
+      </div>
+
+      <div class="admin-status">
+        <h4><i class="fas fa-chart-line"></i> System Status</h4>
+        <div class="admin-status-item">
+          <span>Server Status:</span>
+          <span style="color: #00ffcc;">✓ Online</span>
+        </div>
+        <div class="admin-status-item">
+          <span>Database:</span>
+          <span style="color: #00ffcc;">✓ Connected</span>
+        </div>
+        <div class="admin-status-item">
+          <span>Storage Used:</span>
+          <span style="color: #00ffcc;">Local (Browser)</span>
+        </div>
+        <div class="admin-status-item">
+          <span>Last Updated:</span>
+          <span id="admin-update-time" style="color: #00ffcc;">Just now</span>
+        </div>
+      </div>
+
+      <div class="admin-actions">
+        <button onclick="store.exportData()"><i class="fas fa-download"></i> Export Data</button>
+        <button onclick="store.clearData()"><i class="fas fa-trash"></i> Clear Data</button>
+        <button onclick="store.updateStats()"><i class="fas fa-sync"></i> Refresh Stats</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Chat Button -->
+  <a href="https://wa.me/250788544811?text=Hi%20EstoreRW%2C%20I%20have%20a%20question%20about..." class="whatsapp-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> estore.com  All Rights Reserved with quality assurance.</p>
+      <p>&copy; <span id="year"></span> estore.rw. All Rights Reserved. Quality Phones in Rwanda.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="dashbord.js"></script>
 </body>
 </html>
