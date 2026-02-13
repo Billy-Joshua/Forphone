@@ -186,21 +186,252 @@ form button[type="submit"]:hover {
 
 /* Product Grid - Card Glow */
 .product-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2.5rem; background:#0f0f0f; padding:2rem; border-radius:12px; }
-.product-card { background:#1a1a1a; border-radius:12px; overflow:hidden; border:1px solid #2a2a2a; transition:.4s; position:relative; }
+.product-card { background:#1a1a1a; border-radius:12px; overflow:hidden; border:1px solid #2a2a2a; transition:.4s; position:relative; display:flex; flex-direction:column; height:100%; }
 .product-card:hover { transform:translateY(-8px); border-color:#4a9eff; box-shadow:0 0 20px rgba(74, 158, 255, 0.15); }
 .badge { background:#9333ea; color:#fff; padding:8px 16px; border-radius:8px; font-size:0.9rem; font-weight:700; z-index:2; }
-.product-image { height:250px; overflow:hidden; background:#1a1a1a; }
+
+/* Product Image Wrapper */
+.product-image-wrapper { position:relative; }
+.product-image { height:250px; overflow:hidden; background:#1a1a1a; position:relative; }
 .product-image img { width:100%; height:100%; object-fit:contain; padding:1rem; transition:.4s; }
-.product-card:hover img { transform:scale(1.05); }
-.product-info { padding:2rem; text-align:center; }
-.product-info h3 { font-size:1.4rem; margin-bottom:0.8rem; color:#e0e0e0; }
+.product-card:hover .product-image img { transform:scale(1.05); }
+
+/* Product Info Section */
+.product-info { padding:2rem; text-align:center; flex-grow:1; display:flex; flex-direction:column; }
+.product-info h3 { font-size:1.3rem; margin:0 0 0.8rem 0; color:#e0e0e0; font-weight:600; line-height:1.4; }
 .storage-spec { color:#808080; font-size:0.9rem; margin-bottom:0.5rem; }
-.price { font-size:1.8rem; color:#4a9eff; margin-bottom:1.5rem; text-shadow:none; font-weight:700; }
-.add-to-cart { width:100%; background:#4a9eff; color:#000; border:none; padding:16px; border-radius:8px; font-weight:700; cursor:pointer; transition:.3s; box-shadow:0 0 15px rgba(74, 158, 255, 0.3); }
-.add-to-cart:hover { background:#5aafff; box-shadow:0 0 25px rgba(74, 158, 255, 0.5); }
+
+/* Product Meta */
+.product-meta { display:flex; justify-content:center; gap:0.8rem; margin-bottom:1rem; align-items:center; }
+.brand-tag { background:rgba(74, 158, 255, 0.15); color:#4a9eff; padding:0.4rem 0.8rem; border-radius:6px; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* Product Price */
+.product-price-section { margin-bottom:1.5rem; }
+.price { font-size:1.9rem; color:#4a9eff; margin:0; text-shadow:none; font-weight:700; }
+
+/* Single Add to Cart Button - Professional Style */
+.btn-add-to-cart { width:100%; background:linear-gradient(135deg, #4a9eff 0%, #2a7fff 100%); color:#ffffff; border:none; padding:12px 16px; border-radius:8px; font-weight:700; cursor:pointer; transition:.3s; box-shadow:0 4px 12px rgba(74, 158, 255, 0.3); display:flex; align-items:center; justify-content:center; gap:0.6rem; font-size:0.95rem; margin-top:auto; }
+.btn-add-to-cart:hover:not(:disabled) { background:linear-gradient(135deg, #5ba8ff 0%, #3a8fff 100%); box-shadow:0 6px 16px rgba(74, 158, 255, 0.4); transform:translateY(-2px); }
+.btn-add-to-cart:disabled { background:#505050; color:#a0a0a0; cursor:not-allowed; box-shadow:none; opacity:0.7; }
+.btn-add-to-cart:active:not(:disabled) { transform:translateY(0); }
+.btn-add-to-cart i { font-size:0.85rem; }
+
+/* ============= AI RECOMMENDATIONS SECTION ============= */
+.recommendations {
+  margin-bottom: 4rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 16px;
+  border: 2px solid #4a9eff;
+  box-shadow: 0 8px 32px rgba(74, 158, 255, 0.1);
+}
+
+.recommendations-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.recommendations-header h3 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.recommendations-header h3 i {
+  color: #4a9eff;
+  font-size: 2.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.recommendations-header p {
+  color: #a0a0a0;
+  font-size: 0.95rem;
+}
+
+/* Recommendation Cards Grid */
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.8rem;
+}
+
+/* Individual Recommendation Card */
+.recommendation-card {
+  background: #0f0f0f;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #2a2a2a;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-8px);
+  border-color: #4a9eff;
+  box-shadow: 0 8px 24px rgba(74, 158, 255, 0.2);
+}
+
+.recommendation-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #4a9eff 0%, #2a7fff 100%);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+}
+
+.recommendation-badge i {
+  font-size: 0.9rem;
+}
+
+/* Recommendation Image */
+.recommendation-image {
+  height: 200px;
+  overflow: hidden;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.recommendation-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover .recommendation-image img {
+  transform: scale(1.08);
+}
+
+.stock-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.stock-badge.in-stock {
+  background: rgba(34, 197, 94, 0.8);
+  color: #ffffff;
+}
+
+.stock-badge.out-of-stock {
+  background: rgba(239, 68, 68, 0.8);
+  color: #ffffff;
+}
+
+/* Recommendation Info */
+.recommendation-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recommendation-name {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.recommendation-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid #2a2a2a;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.recommendation-brand {
+  color: #a0a0a0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.recommendation-price {
+  color: #4a9eff;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Recommendation Add to Cart Button */
+.btn-recommend {
+  background: linear-gradient(135deg, #4a9eff 0%, #2a7fff 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn-recommend:hover {
+  background: linear-gradient(135deg, #5ba8ff 0%, #3a8fff 100%);
+  box-shadow: 0 6px 20px rgba(74, 158, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-recommend:active {
+  transform: translateY(0);
+}
+
+.btn-recommend:disabled {
+  background: #505050;
+  color: #808080;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Animation for sparkle effect */
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
 
 /* Recommendations - Professional Dark */
-.recommendations { margin-bottom:4rem; padding:1.5rem; background:#1a1a1a; border-radius:12px; border:1px solid #2a2a2a; }
 .recommendations h3 { font-size:1.6rem; margin-bottom:1.5rem; color:#e0e0e0; }
 
 /* Sell Form - Glowing Fields */

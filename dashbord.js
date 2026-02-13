@@ -48,7 +48,12 @@ class ForPhoneStore {
         this.loadCart();
         this.loadListings();
         this.updateYear();
+        
+        // Initialize AI Recommendations Engine
+        aiRecommendations = new AIRecommendations(this.products);
+        
         this.renderFilters();
+        this.renderRecommendations(); // Render recommendations before products
         this.renderProducts();
         this.renderSellForm();
         this.renderListings();
@@ -74,6 +79,16 @@ class ForPhoneStore {
 
     saveListings() {
         localStorage.setItem('forphoneListings', JSON.stringify(this.listings));
+    }
+
+    renderRecommendations() {
+        if (aiRecommendations) {
+            aiRecommendations.renderRecommendations('recommendations', 5);
+            // Re-bind add to cart for recommendation cards
+            setTimeout(() => {
+                this.bindAddToCart();
+            }, 100);
+        }
     }
 
     updateCartUI() {
@@ -502,38 +517,44 @@ class ForPhoneStore {
         container.innerHTML = filtered.map(p => {
             const priceStr = 'RWF ' + (p.price || 0).toLocaleString();
             const imgSrc = `images/${p.image}`;
-            const stockBadge = (p.stock && p.stock > 0) ? `<span class="stock-badge in-stock">In stock: ${p.stock}</span>` : `<span class="stock-badge out-of-stock">Out of stock</span>`;
+            const stockStatus = (p.stock && p.stock > 0);
+            const buttonText = stockStatus ? '<i class="fas fa-shopping-cart"></i> Add to Cart' : '<i class="fas fa-ban"></i> Out of Stock';
 
             return `
-            <div class="product-card featured">
-                <div class="product-image">
-                    <img src="${imgSrc}" alt="${p.name}" loading="lazy">
-                    ${stockBadge}
+            <div class="product-card featured" data-product-id="${p.id}" data-brand="${p.brand}">
+                <div class="product-image-wrapper">
+                    <div class="product-image">
+                        <img src="${imgSrc}" alt="${p.name}" loading="lazy">
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">${p.name}</h3>
                     <div class="product-meta">
-                        <span class="brand">${p.brand.charAt(0).toUpperCase() + p.brand.slice(1)}</span>
+                        <span class="brand-tag">${p.brand.charAt(0).toUpperCase() + p.brand.slice(1)}</span>
+                    </div>
+                    <div class="product-price-section">
                         <span class="price">${priceStr}</span>
                     </div>
-                    <p class="product-actions">
-                        <button class="btn-primary add-to-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" ${p.stock && p.stock > 0 ? '' : 'disabled'}>
-                            <i class="fas fa-cart-plus"></i> Add to Cart
-                        </button>
-                        <button class="btn-secondary view-details" data-id="${p.id}">View</button>
-                    </p>
+                    <button class="btn-add-to-cart add-to-cart" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" ${p.stock && p.stock > 0 ? '' : 'disabled'}>
+                        ${buttonText}
+                    </button>
                 </div>
             </div>`;
         }).join('');
 
         this.bindAddToCart();
-        // optional: bind view details
-        document.querySelectorAll('.view-details').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const id = parseInt(btn.dataset.id);
-                const p = this.products.find(x => x.id === id);
-                if (p) {
-                    alert(`${p.name}\nPrice: RWF ${p.price.toLocaleString()}\nStock: ${p.stock || 0}`);
+
+        // Track hover views for AI recommendations
+        document.querySelectorAll('.product-card[data-product-id]').forEach(card => {
+            let hoverTracked = false;
+            card.addEventListener('mouseenter', () => {
+                if (!hoverTracked && aiRecommendations) {
+                    const productId = parseInt(card.dataset.productId);
+                    const product = this.products.find(p => p.id === productId);
+                    if (product) {
+                        aiRecommendations.trackProductView(product);
+                        hoverTracked = true;
+                    }
                 }
             });
         });
@@ -766,6 +787,17 @@ class ForPhoneStore {
                 const id = parseInt(btn.dataset.id);
                 const name = btn.dataset.name;
                 const price = parseFloat(btn.dataset.price);
+                
+                // Track product view with AI Recommendations
+                if (aiRecommendations) {
+                    const product = this.products.find(p => p.id === id);
+                    if (product) {
+                        aiRecommendations.trackProductView(product);
+                        // Re-render recommendations after tracking
+                        this.renderRecommendations();
+                    }
+                }
+                
                 this.addToCart(id, name, price);
             });
         });

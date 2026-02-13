@@ -96,6 +96,13 @@ ForPhone Store is an enterprise-grade e-commerce solution that eliminates the co
 - ✅ **Accessibility** - WCAG 2.1 compliant interface
 - ✅ **Icon Library** - Font Awesome 6 pro icons
 
+### AI & Smart Features
+- ✅ **AI Recommendations** - Smart product suggestions based on browsing history
+- ✅ **Personalization** - Customized product feeds based on user behavior
+- ✅ **Smart Search** - Intelligent product discovery and filtering
+- ✅ **Recommendation Engine** - ML-ready infrastructure for predictive suggestions
+- ✅ **Browse History Tracking** - Anonymous tracking for better recommendations
+
 ---
 
 ## 🛠 Tech Stack
@@ -340,6 +347,34 @@ cart.load()
 }
 ```
 
+### AI Recommendations Engine
+```javascript
+// Smart product suggestion system
+// Features:
+- Browse history tracking
+- Product tag-based recommendations
+- User behavior analysis
+- Personalized product feeds
+- ML-ready recommendation API
+
+// Recommendation Categories:
+{
+  recentlyViewed: [...],      // Recently browsed products
+  smartSuggestions: [...],    // AI-based recommendations
+  trending: [...],             // Popular items
+  personalizedPicks: [...]    // User preference matching
+}
+
+// Available Tags for AI:
+- AI (Artificial Intelligence)
+- Camera (Photography)
+- Performance (Speed)
+- Battery Life
+- 5G Connectivity
+- Gaming
+- Photography Pro
+```
+
 ---
 
 ## 🔐 Authentication & Security
@@ -498,6 +533,46 @@ applyPromoCode(code, subtotal)
 ```javascript
 getOrderHistory(userId)
 // Returns: array of order objects
+```
+
+### AI Recommendations API
+
+#### Get Recommendations
+```javascript
+getRecommendations(userId, limit = 10)
+// userId: Logged-in user ID (optional for anonymous browsing)
+// limit: Number of recommendations (default: 10)
+// Returns: array of recommended products
+```
+
+#### Get Recently Viewed Products
+```javascript
+getRecentlyViewed(userId, limit = 5)
+// Returns: array of recently browsed products
+// Tracks user browsing history for personalization
+```
+
+#### Get Personalized Feed
+```javascript
+getPersonalizedFeed(userId, filters = {})
+// userId: User ID for personalization
+// filters: { category, priceRange, brand }
+// Returns: custom feed based on user preferences
+```
+
+#### Track Product View
+```javascript
+trackProductView(productId, userId = null)
+// Logs product view for recommendation algorithm
+// Returns: { tracked: boolean, timestamp: date }
+```
+
+#### Generate AI Suggestions
+```javascript
+generateAISuggestions(viewingHistory, browsedTags = [])
+// viewingHistory: array of previously viewed product IDs
+// browsedTags: array of product feature tags
+// Returns: intelligent product recommendations
 ```
 
 ---
