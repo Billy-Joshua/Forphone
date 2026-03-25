@@ -365,7 +365,7 @@ class EstoreRW {
     
     if (subtotalEl) subtotalEl.textContent = total.toLocaleString();
     if (shippingEl) shippingEl.textContent = shipping.toLocaleString();
-    if (discountAmountEl && discount > 0) discountAmountEl.textContent = discount.toLocaleString();
+    if (discountAmountEl && discount > 0) discountAmountEl.textContent = `-${discount.toLocaleString()}`;
     if (discountRow) discountRow.style.display = discount > 0 ? 'flex' : 'none';
     if (cartTotalEl) cartTotalEl.textContent = cartTotal.toLocaleString();
     if (itemCountEl) itemCountEl.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
@@ -390,7 +390,7 @@ class EstoreRW {
       this.updateCartTotals();
       promoInput.value = '';
     } else {
-      this.notify('❌ Invalid promo code', 'error');
+      this.notify(' Invalid promo code', 'error');
       this.promoCode = null;
     }
   }
