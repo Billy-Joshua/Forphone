@@ -1,11 +1,11 @@
 /**
  * EstoreRW - Professional E-Commerce Platform for Premium Phones in Rwanda
- * Futuristic 2050 Design with Production-Ready Features
+ * Production-Ready with Full Admin Panel & Cart System - 2026
  */
 
 class EstoreRW {
   constructor() {
-    this.products = [
+    this.products = this.loadFromStorage('estore_products') || [
       // Premium Apple Devices
       { id: 1, name: 'iPhone 17 Pro Max', price: 1299000, storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpg', badge: 'Latest', tags: ['premium', 'ai', 'futuristic'] },
       { id: 2, name: 'iPhone 17 Pro', price: 1099000, storage: '512GB', brand: 'apple', image: 'iphone17-pro.jpg', badge: 'Latest', tags: ['premium', 'ai'] },
@@ -43,6 +43,7 @@ class EstoreRW {
     this.currentFilter = 'all';
     this.searchQuery = '';
     this.darkMode = true;
+    this.maxProductId = Math.max(...this.products.map(p => p.id), 0);
 
     this.init();
   }
@@ -335,8 +336,15 @@ class EstoreRW {
 
   // ===== AUTHENTICATION =====
   login(email, password) {
-    if (!this.validateEmail(email) || !password) {
-      this.notify('Please enter valid credentials', 'error');
+    console.log('Login attempt:', { email, password }); // Debug log
+    
+    if (!email || !password) {
+      this.notify('Please enter email and password', 'error');
+      return;
+    }
+
+    if (!this.validateEmail(email)) {
+      this.notify('Please enter a valid email', 'error');
       return;
     }
 
@@ -349,7 +357,7 @@ class EstoreRW {
       this.closeModal('login-modal');
       this.renderRecommendations();
     } else {
-      this.notify('Invalid credentials. Try test@estore.rw / test123', 'error');
+      this.notify('❌ Invalid credentials. Try test@estore.rw / test123', 'error');
     }
   }
 

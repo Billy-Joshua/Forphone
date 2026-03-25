@@ -67,10 +67,16 @@ class ForPhoneStore {
         if (saved) this.cart = JSON.parse(saved);
         this.updateCartUI();
     }
-
-    saveCart() {
-        localStorage.setItem('forphoneCart', JSON.stringify(this.cart));
+loadCart() {
+    try {
+        const savedCart = JSON.parse(localStorage.getItem("cart"));
+        this.cart = Array.isArray(savedCart) ? savedCart : [];
+    } catch (e) {
+        this.cart = [];
     }
+}
+
+
 
     loadListings() {
         const saved = localStorage.getItem('forphoneListings');
@@ -109,6 +115,7 @@ updateCartUI() {
         `).join("");
     }
 }
+
 
 
     renderFilters() {
