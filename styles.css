@@ -18,7 +18,8 @@ body.dark-mode { background:#0a0a0a; color:#d0d0d0; }
 .nav-link { color:#a0a0a0; font-weight:600; text-decoration:none; position:relative; transition:.3s; }
 .nav-link:hover { color:#d0d0d0; }
 .nav-link.active::after { content:''; position:absolute; bottom:-10px; left:0; width:100%; height:2px; background:#4a9eff; }
-.cart-btn { font-size:1.5rem; color:#d0d0d0; position:relative; }
+.cart-btn { font-size:1.5rem; color:#d0d0d0; position:relative; cursor:pointer; transition:all 0.3s ease; padding: 8px 12px; border-radius: 8px; background: none; border: none; }
+.cart-btn:hover { color: #4a9eff; transform: scale(1.1); }
 #cart-count { background:#4a9eff; color:#fff; font-size:0.8rem; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
 .menu-toggle { display:none; background:none; border:none; font-size:1.8rem; cursor:pointer; color:#d0d0d0; }
 .icon-btn { background:none; border:none; font-size:1.4rem; cursor:pointer; color:#d0d0d0; }
@@ -94,6 +95,166 @@ body.dark-mode { background:#0a0a0a; color:#d0d0d0; }
   transform: translateY(-2px);
 }
 .add-to-cart:active {
+  transform: translateY(0);
+}
+
+/* ============= CART MODAL PROFESSIONAL STYLING ============= */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 600px;
+}
+
+.cart-header {
+  border-bottom: 2px solid #4a9eff;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cart-header h2 {
+  color: #d0d0d0;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.cart-header p {
+  color: #4a9eff;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.cart-items-list {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  max-height: 300px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  padding-right: 10px;
+}
+
+.cart-items-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.cart-items-list::-webkit-scrollbar-thumb {
+  background: #4a9eff;
+  border-radius: 3px;
+}
+
+.cart-items-list::-webkit-scrollbar-thumb:hover {
+  background: #5ba8ff;
+}
+
+.cart-item {
+  animation: slideUp 0.3s ease-out;
+  transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+  background: rgba(74, 158, 255, 0.05);
+  border-left: 3px solid #4a9eff;
+  padding-left: 1rem !important;
+}
+
+.cart-summary {
+  background: rgba(74, 158, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(74, 158, 255, 0.2);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(74, 158, 255, 0.1);
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row.total {
+  border-top: 2px solid #4a9eff;
+  padding-top: 1rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4a9eff;
+}
+
+.summary-row.discount {
+  color: #00ffcc;
+  font-weight: 600;
+}
+
+.cart-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.promo-section {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.promo-input {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #d0d0d0;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.promo-input::placeholder {
+  color: #666;
+}
+
+.promo-input:focus {
+  outline: none;
+  border-color: #4a9eff;
+  box-shadow: 0 0 12px rgba(74, 158, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-promo {
+  padding: 12px 20px;
+  background: #00ffcc;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.btn-promo:hover {
+  background: #00e6b8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
+}
+
+.btn-promo:active {
   transform: translateY(0);
 }
 
@@ -429,6 +590,83 @@ form button[type="submit"]:hover {
     transform: scale(1.1);
     opacity: 0.8;
   }
+}
+
+/* Professional Modal & Cart Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal Active State - Start Animations */
+.modal.active {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal.active .modal-content {
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Cart Item Animation */
+.cart-item {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Product Card Hover Animation */
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: #4a9eff;
+}
+
+/* Button Click Animation */
+button:active {
+  transform: scale(0.98);
+}
+
+/* Smooth Cart Count Update */
+#cart-count {
+  animation: pulse 0.3s ease;
+}
+
+/* Notification Animation */
+.notification {
+  animation: slideUp 0.3s ease-out, fadeIn 0.3s ease-out;
+  animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Recommendations - Professional Dark */

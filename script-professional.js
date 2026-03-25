@@ -44,6 +44,7 @@ class EstoreRW {
     this.searchQuery = '';
     this.darkMode = true;
     this.maxProductId = Math.max(...this.products.map(p => p.id), 0);
+    this.promoCode = null;
 
     this.init();
   }
@@ -282,16 +283,20 @@ class EstoreRW {
   }
 
   removeFromCart(id) {
+    const item = this.cart.find(i => i.id === id);
     this.cart = this.cart.filter(item => item.id !== id);
     this.saveToStorage('estore_cart', this.cart);
     this.updateCartUI();
-    this.notify('✓ Item removed from cart', 'success');
+    if (item) {
+      this.notify(`✓ ${item.name} removed from cart`, 'success');
+    }
   }
 
   updateCartQuantity(id, qty) {
+    const qtyNum = parseInt(qty) || 1;
     const item = this.cart.find(i => i.id === id);
     if (item) {
-      item.qty = Math.max(1, qty);
+      item.qty = Math.max(1, Math.min(qtyNum, 100)); // Min 1, Max 100
       this.saveToStorage('estore_cart', this.cart);
       this.updateCartUI();
     }
@@ -310,28 +315,84 @@ class EstoreRW {
 
     if (this.cart.length === 0) {
       container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #cccccc;">Your cart is empty. Start shopping!</p>';
+      this.updateCartTotals();
       return;
     }
 
     container.innerHTML = this.cart.map(item => `
-      <div class="cart-item">
-        <div>
-          <h4>${item.name}</h4>
+      <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #2a2a2a;">
+        <div style="flex: 1;">
+          <h4 style="color: #d0d0d0; margin-bottom: 0.3rem;">${item.name}</h4>
           <p style="font-size: 0.9rem; color: #00ffcc;">RWF ${item.price.toLocaleString()}</p>
         </div>
-        <div class="cart-item-controls">
-          <input type="number" min="1" value="${item.qty}" onchange="store.updateCartQuantity(${item.id}, this.value)" aria-label="Quantity for ${item.name}">
-          <span>RWF ${(item.price * item.qty).toLocaleString()}</span>
-          <button onclick="store.removeFromCart(${item.id})" aria-label="Remove ${item.name}" class="cart-remove">
+        <div class="cart-item-controls" style="display: flex; gap: 1rem; align-items: center;">
+          <input type="number" min="1" max="100" value="${item.qty}" onchange="store.updateCartQuantity(${item.id}, this.value)" aria-label="Quantity for ${item.name}" style="width: 60px; padding: 6px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <span style="color: #d0d0d0; min-width: 120px; text-align: right;">RWF ${(item.price * item.qty).toLocaleString()}</span>
+          <button onclick="store.removeFromCart(${item.id})" aria-label="Remove ${item.name}" class="cart-remove" style="background: #ef4444; color: white; border: none; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
             <i class="fas fa-trash"></i>
           </button>
         </div>
       </div>
     `).join('');
 
+    this.updateCartTotals();
+  }
+
+  updateCartTotals() {
     const total = this.cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-    const totalEl = document.getElementById('cart-total');
-    if (totalEl) totalEl.textContent = total.toLocaleString();
+    const subtotalEl = document.getElementById('subtotal');
+    const shippingEl = document.getElementById('shipping');
+    const cartTotalEl = document.getElementById('cart-total');
+    const itemCountEl = document.getElementById('cart-item-count');
+    const discountRow = document.getElementById('discount-row');
+    const discountAmountEl = document.getElementById('discount-amount');
+    
+    const shipping = this.cart.length > 0 ? 5000 : 0;
+    let discount = 0;
+    
+    // Apply promo discount if exists
+    if (this.promoCode && this.cart.length > 0) {
+      const promoDiscounts = {
+        'SAVE10': total * 0.10,
+        'SAVE20': total * 0.20,
+        'WELCOME5': total * 0.05
+      };
+      discount = promoDiscounts[this.promoCode.toUpperCase()] || 0;
+    }
+    
+    const cartTotal = total + shipping - discount;
+    const itemCount = this.cart.reduce((sum, item) => sum + item.qty, 0);
+    
+    if (subtotalEl) subtotalEl.textContent = total.toLocaleString();
+    if (shippingEl) shippingEl.textContent = shipping.toLocaleString();
+    if (discountAmountEl && discount > 0) discountAmountEl.textContent = discount.toLocaleString();
+    if (discountRow) discountRow.style.display = discount > 0 ? 'flex' : 'none';
+    if (cartTotalEl) cartTotalEl.textContent = cartTotal.toLocaleString();
+    if (itemCountEl) itemCountEl.textContent = `${itemCount} item${itemCount !== 1 ? 's' : ''}`;
+  }
+
+  applyPromoCode() {
+    const promoInput = document.getElementById('promo-code');
+    if (!promoInput) return;
+    
+    const code = promoInput.value.trim().toUpperCase();
+    const validCodes = ['SAVE10', 'SAVE20', 'WELCOME5'];
+    
+    if (!code) {
+      this.notify('Please enter a promo code', 'error');
+      return;
+    }
+    
+    if (validCodes.includes(code)) {
+      this.promoCode = code;
+      const discountPercent = code === 'SAVE20' ? '20%' : code === 'SAVE10' ? '10%' : '5%';
+      this.notify(`✓ Promo code applied! ${discountPercent} discount`, 'success');
+      this.updateCartTotals();
+      promoInput.value = '';
+    } else {
+      this.notify('❌ Invalid promo code', 'error');
+      this.promoCode = null;
+    }
   }
 
   // ===== AUTHENTICATION =====
@@ -598,13 +659,44 @@ class EstoreRW {
   // ===== MODAL MANAGEMENT =====
   openModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Load admin data if opening admin modal
+      if (modalId === 'admin-modal' && this.currentUser?.isAdmin) {
+        this.updateStats();
+        this.refreshAdminProductsList();
+      }
+    }
     this.closeUserMenu(); // Close user menu when opening modal
   }
 
   closeModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.remove('active');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  }
+
+  goToCheckoutStep(step) {
+    const currentSteps = document.querySelectorAll('.checkout-step.active');
+    currentSteps.forEach(s => s.classList.remove('active'));
+    const targetStep = document.querySelector(`.checkout-step[data-step="${step}"]`);
+    if (targetStep) {
+      targetStep.classList.add('active');
+      targetStep.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const progressSteps = document.querySelectorAll('.progress-step');
+    progressSteps.forEach((ps, idx) => {
+      if (idx + 1 <= step) {
+        ps.classList.add('active');
+      } else {
+        ps.classList.remove('active');
+      }
+    });
   }
 
   // ===== UTILITIES =====
@@ -666,15 +758,167 @@ class EstoreRW {
   updateStats() {
     if (!this.currentUser?.isAdmin) return;
     
-    document.getElementById('admin-products').textContent = this.products.length;
-    document.getElementById('admin-cart-count').textContent = this.cart.reduce((sum, item) => sum + item.qty, 0);
-    document.getElementById('admin-users').textContent = this.users.length;
-    document.getElementById('admin-brands').textContent = this.brands.length;
+    const totalRevenue = this.cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const productCount = document.getElementById('admin-products');
+    const cartCount = document.getElementById('admin-cart-count');
+    const userCount = document.getElementById('admin-users');
+    const brandCount = document.getElementById('admin-brands');
+    const revenueEl = document.getElementById('admin-revenue');
+    const updateTimeEl = document.getElementById('admin-update-time');
     
-    const now = new Date();
-    document.getElementById('admin-update-time').textContent = now.toLocaleTimeString();
+    if (productCount) productCount.textContent = this.products.length;
+    if (cartCount) cartCount.textContent = this.cart.reduce((sum, item) => sum + item.qty, 0);
+    if (userCount) userCount.textContent = this.users.length;
+    if (brandCount) brandCount.textContent = this.brands.length;
+    if (revenueEl) revenueEl.textContent = 'RWF ' + totalRevenue.toLocaleString();
+    if (updateTimeEl) {
+      const now = new Date();
+      updateTimeEl.textContent = now.toLocaleTimeString();
+    }
     
     this.notify('✓ Dashboard updated', 'success');
+  }
+
+  addProduct(name, price, storage, brand, image, badge, tags = []) {
+    if (!this.currentUser?.isAdmin) {
+      this.notify('Admin access required', 'error');
+      return;
+    }
+
+    if (!name || !price || !storage || !brand || !image) {
+      this.notify('Please fill all required fields', 'error');
+      return;
+    }
+
+    const newProduct = {
+      id: ++this.maxProductId,
+      name,
+      price: parseFloat(price),
+      storage,
+      brand: brand.toLowerCase(),
+      image,
+      badge: badge || 'New',
+      tags: tags.length > 0 ? tags : ['new']
+    };
+
+    this.products.push(newProduct);
+    this.saveToStorage('estore_products', this.products);
+    this.brands = [...new Set(this.products.map(p => p.brand))];
+    this.renderFilters();
+    this.renderProducts();
+    this.updateStats();
+    this.notify(`✓ Product "${name}" added successfully!`, 'success');
+  }
+
+  removeProduct(productId) {
+    if (!this.currentUser?.isAdmin) {
+      this.notify('Admin access required', 'error');
+      return;
+    }
+
+    const product = this.products.find(p => p.id === productId);
+    if (!product) {
+      this.notify('Product not found', 'error');
+      return;
+    }
+
+    this.products = this.products.filter(p => p.id !== productId);
+    this.saveToStorage('estore_products', this.products);
+    this.renderProducts();
+    this.updateStats();
+    this.notify(`✓ Product "${product.name}" removed`, 'success');
+  }
+
+  editProduct(productId, updates) {
+    if (!this.currentUser?.isAdmin) {
+      this.notify('Admin access required', 'error');
+      return;
+    }
+
+    const product = this.products.find(p => p.id === productId);
+    if (!product) {
+      this.notify('Product not found', 'error');
+      return;
+    }
+
+    Object.assign(product, updates);
+    this.saveToStorage('estore_products', this.products);
+    this.renderProducts();
+    this.updateStats();
+    this.notify('✓ Product updated successfully', 'success');
+  }
+
+  getAdminProductsHTML() {
+    if (!this.currentUser?.isAdmin) return '';
+    
+    return `
+      <div class="admin-products-list">
+        <h4 style="color: #d0d0d0; margin-bottom: 1rem;"><i class="fas fa-list"></i> Current Products</h4>
+        <table style="width: 100%; border-collapse: collapse;;">
+          <thead>
+            <tr style="border-bottom: 2px solid #4a9eff;">
+              <th style="text-align: left; padding: 10px; color: #d0d0d0;">Name</th>
+              <th style="text-align: left; padding: 10px; color: #d0d0d0;">Price</th>
+              <th style="text-align: left; padding: 10px; color: #d0d0d0;">Brand</th>
+              <th style="text-align: center; padding: 10px; color: #d0d0d0;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${this.products.map(p => `
+              <tr style="border-bottom: 1px solid #2a2a2a; background: rgba(255, 255, 255, 0.02);">
+                <td style="padding: 10px; color: #d0d0d0;">${p.name}</td>
+                <td style="padding: 10px; color: #d0d0d0;">RWF ${p.price.toLocaleString()}</td>
+                <td style="padding: 10px; color: #d0d0d0; text-transform: capitalize;">${p.brand}</td>
+                <td style="text-align: center; padding: 10px;">
+                  <button onclick="store.removeProduct(${p.id})" class="btn-admin-remove" style="background: #ef4444; color: white; padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">
+                    Remove
+                  </button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  addProductFromForm() {
+    if (!this.currentUser?.isAdmin) {
+      this.notify('Admin access required', 'error');
+      return;
+    }
+
+    const name = document.getElementById('admin-product-name')?.value.trim();
+    const price = document.getElementById('admin-product-price')?.value;
+    const storage = document.getElementById('admin-product-storage')?.value.trim();
+    const brand = document.getElementById('admin-product-brand')?.value.trim();
+    const image = document.getElementById('admin-product-image')?.value.trim();
+    const badge = document.getElementById('admin-product-badge')?.value.trim();
+
+    if (!name || !price || !storage || !brand || !image) {
+      this.notify('Please fill all required fields', 'error');
+      return;
+    }
+
+    this.addProduct(name, price, storage, brand, image, badge);
+
+    // Clear form
+    document.getElementById('admin-product-name').value = '';
+    document.getElementById('admin-product-price').value = '';
+    document.getElementById('admin-product-storage').value = '';
+    document.getElementById('admin-product-brand').value = '';
+    document.getElementById('admin-product-image').value = '';
+    document.getElementById('admin-product-badge').value = '';
+
+    // Refresh admin products list
+    this.refreshAdminProductsList();
+  }
+
+  refreshAdminProductsList() {
+    const container = document.getElementById('admin-products-list');
+    if (container) {
+      container.innerHTML = this.getAdminProductsHTML();
+    }
   }
 
   exportData() {
@@ -743,67 +987,26 @@ class EstoreRW {
       checkoutForm.addEventListener('submit', (e) => this.handleCheckout(e));
     }
 
-    // Modal controls
+    // Modal controls - IMPROVED
     document.querySelectorAll('.close').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        e.target.closest('.modal')?.classList.remove('active');
+        e.preventDefault();
+        e.stopPropagation();
+        const modal = e.target.closest('.modal');
+        if (modal) {
+          this.closeModal(modal.id);
+        }
       });
     });
 
-    // Cart button
-    const cartBtn = document.getElementById('cart-btn');
-    if (cartBtn) {
-      cartBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.openModal('cart-modal');
-      });
-    }
-
-    // Checkout button
-    const checkoutBtn = document.getElementById('checkout-btn');
-    if (checkoutBtn) {
-      checkoutBtn.addEventListener('click', () => {
-        if (this.cart.length === 0) {
-          this.notify('Your cart is empty', 'error');
-          return;
+    // Close modals on outside click
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          this.closeModal(modal.id);
         }
-        this.closeModal('cart-modal');
-        this.openModal('checkout-modal');
       });
-    }
-
-    // Login form
-    const loginForm = document.getElementById('login-form');
-    if (loginForm) {
-      loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = loginForm.querySelector('input[type="email"]').value;
-        const password = loginForm.querySelector('input[type="password"]').value;
-        this.login(email, password);
-        loginForm.reset();
-      });
-    }
-
-    // Register form
-    const registerForm = document.getElementById('register-form');
-    if (registerForm) {
-      registerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const inputs = registerForm.querySelectorAll('input');
-        this.register(inputs[0].value, inputs[1].value, inputs[2].value, inputs[3].value);
-        registerForm.reset();
-      });
-    }
-
-    // Register link
-    const registerLink = document.getElementById('register-link');
-    if (registerLink) {
-      registerLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        this.closeModal('login-modal');
-        this.openModal('register-modal');
-      });
-    }
+    });
 
     // Mobile menu
     const menuToggle = document.getElementById('menu-toggle');
@@ -839,6 +1042,112 @@ class EstoreRW {
         this.darkMode = !this.darkMode;
         document.body.classList.toggle('dark-mode', this.darkMode);
         localStorage.setItem('darkMode', this.darkMode);
+      });
+    }
+
+    // CART BUTTON - Primary Click Handler
+    const cartBtn = document.getElementById('cart-btn');
+    if (cartBtn) {
+      cartBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.openModal('cart-modal');
+      });
+    }
+
+    // Checkout button
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (this.cart.length === 0) {
+          this.notify('Your cart is empty', 'error');
+          return;
+        }
+        this.closeModal('cart-modal');
+        this.openModal('checkout-modal');
+      });
+    }
+
+    // Continue shopping button
+    const continueShoppingBtn = document.getElementById('continue-shopping');
+    if (continueShoppingBtn) {
+      continueShoppingBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.closeModal('cart-modal');
+      });
+    }
+
+    // Apply promo code button
+    const applyPromoBtn = document.getElementById('apply-promo');
+    if (applyPromoBtn) {
+      applyPromoBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.applyPromoCode();
+      });
+    }
+
+    // Allow Enter key to apply promo
+    const promoInput = document.getElementById('promo-code');
+    if (promoInput) {
+      promoInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.applyPromoCode();
+        }
+      });
+    }
+
+    // LOGIN FORM - Improved event binding
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = loginForm.querySelector('#login-email');
+        const passwordInput = loginForm.querySelector('#login-password');
+        const email = emailInput ? emailInput.value.trim() : '';
+        const password = passwordInput ? passwordInput.value.trim() : '';
+        this.login(email, password);
+      });
+    }
+
+    // REGISTER FORM - Improved event binding
+    const registerForm = document.getElementById('register-form');
+    if (registerForm) {
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = registerForm.querySelector('#register-name');
+        const emailInput = registerForm.querySelector('#register-email');
+        const passwordInput = registerForm.querySelector('#register-password');
+        const confirmPasswordInput = registerForm.querySelector('#register-confirm');
+        
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const password = passwordInput ? passwordInput.value.trim() : '';
+        const passwordConfirm = confirmPasswordInput ? confirmPasswordInput.value.trim() : '';
+        
+        this.register(name, email, password, passwordConfirm);
+        registerForm.reset();
+      });
+    }
+
+    // Register link
+    const registerLink = document.getElementById('register-link');
+    if (registerLink) {
+      registerLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.closeModal('login-modal');
+        this.openModal('register-modal');
+      });
+    }
+
+    // Login from register link
+    const loginFromRegisterLink = document.getElementById('login-from-register');
+    if (loginFromRegisterLink) {
+      loginFromRegisterLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.closeModal('register-modal');
+        this.openModal('login-modal');
       });
     }
 

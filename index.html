@@ -11,7 +11,7 @@
   <meta property="og:image" content="images/bland.jpg">
   <meta property="og:url" content="https://estore.rw">
   <link rel="canonical" href="https://estore.rw">
-  <link rel="icon" href="images/bland.jpg" />
+  <link rel="icon" href="images/BLAND1.jpeg" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="styles.css"/>
@@ -29,7 +29,7 @@
   <header class="header" id="header">
     <div class="container header-inner">
       <a href="#" class="logo">
-        <img src="images/bland.jpg" alt="EstoreRW Logo" loading="lazy"/> estore.rw
+        <img src="images/BLAND1.jpeg" alt="EstoreRW Logo" loading="lazy"/> estore.rw
       </a>
       <nav class="nav" id="nav">
         <a href="#home" class="nav-link">Home</a>
@@ -730,53 +730,79 @@
 
   <!-- ADMIN DASHBOARD MODAL -->
   <div id="admin-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
       <span class="close">&times;</span>
       <h2><i class="fas fa-cog"></i> Admin Dashboard</h2>
       
-      <div class="admin-info">
-        <div class="admin-stat">
-          <div class="admin-stat-value" id="admin-products">16</div>
-          <div class="admin-stat-label">Total Products</div>
+      <div class="admin-info" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
+          <div class="admin-stat-value" id="admin-products" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">16</div>
+          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Total Products</div>
         </div>
-        <div class="admin-stat">
-          <div class="admin-stat-value" id="admin-cart-count">0</div>
-          <div class="admin-stat-label">Items in Cart</div>
+        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
+          <div class="admin-stat-value" id="admin-cart-count" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">0</div>
+          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Items in Cart</div>
         </div>
-        <div class="admin-stat">
-          <div class="admin-stat-value" id="admin-users">1</div>
-          <div class="admin-stat-label">Registered Users</div>
+        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
+          <div class="admin-stat-value" id="admin-users" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">1</div>
+          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Registered Users</div>
         </div>
-        <div class="admin-stat">
-          <div class="admin-stat-value" id="admin-brands">5</div>
-          <div class="admin-stat-label">Active Brands</div>
-        </div>
-      </div>
-
-      <div class="admin-status">
-        <h4><i class="fas fa-chart-line"></i> System Status</h4>
-        <div class="admin-status-item">
-          <span>Server Status:</span>
-          <span style="color: #00ffcc;">✓ Online</span>
-        </div>
-        <div class="admin-status-item">
-          <span>Database:</span>
-          <span style="color: #00ffcc;">✓ Connected</span>
-        </div>
-        <div class="admin-status-item">
-          <span>Storage Used:</span>
-          <span style="color: #00ffcc;">Local (Browser)</span>
-        </div>
-        <div class="admin-status-item">
-          <span>Last Updated:</span>
-          <span id="admin-update-time" style="color: #00ffcc;">Just now</span>
+        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
+          <div class="admin-stat-value" id="admin-brands" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">5</div>
+          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Active Brands</div>
         </div>
       </div>
 
-      <div class="admin-actions">
-        <button onclick="store.exportData()"><i class="fas fa-download"></i> Export Data</button>
-        <button onclick="store.clearData()"><i class="fas fa-trash"></i> Clear Data</button>
-        <button onclick="store.updateStats()"><i class="fas fa-sync"></i> Refresh Stats</button>
+      <div class="admin-status" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+        <h4 style="color: #d0d0d0; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> System Status</h4>
+        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
+          <span style="color: #a0a0a0;">Server Status:</span>
+          <span style="color: #00ffcc; font-weight: 600;">✓ Online</span>
+        </div>
+        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
+          <span style="color: #a0a0a0;">Database:</span>
+          <span style="color: #00ffcc; font-weight: 600;">✓ Connected</span>
+        </div>
+        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
+          <span style="color: #a0a0a0;">Estimated Revenue:</span>
+          <span style="color: #00ffcc; font-weight: 600;" id="admin-revenue">RWF 0</span>
+        </div>
+        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+          <span style="color: #a0a0a0;">Last Updated:</span>
+          <span id="admin-update-time" style="color: #00ffcc; font-weight: 600;">Just now</span>
+        </div>
+      </div>
+
+      <!-- Add New Product Form -->
+      <div class="admin-add-product" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+        <h4 style="color: #d0d0d0; margin-bottom: 1rem;"><i class="fas fa-plus"></i> Add New Product</h4>
+        <div class="admin-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <input type="text" id="admin-product-name" placeholder="Product Name" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <input type="number" id="admin-product-price" placeholder="Price (RWF)" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <input type="text" id="admin-product-storage" placeholder="Storage" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <select id="admin-product-brand" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+            <option value="">Select Brand</option>
+            <option value="apple">Apple</option>
+            <option value="samsung">Samsung</option>
+            <option value="google">Google</option>
+            <option value="oneplus">OnePlus</option>
+            <option value="xiaomi">Xiaomi</option>
+          </select>
+          <input type="text" id="admin-product-image" placeholder="Image filename" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <input type="text" id="admin-product-badge" placeholder="Badge (e.g., Latest)" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+          <button onclick="store.addProductFromForm()" style="grid-column: 1 / -1; padding: 12px; background: #4a9eff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+            <i class="fas fa-plus"></i> Add Product
+          </button>
+        </div>
+      </div>
+
+      <!-- Products List -->
+      <div id="admin-products-list" style="margin-bottom: 2rem;"></div>
+
+      <div class="admin-actions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+        <button onclick="store.updateStats()" style="padding: 12px; background: #4a9eff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-sync"></i> Refresh Stats</button>
+        <button onclick="store.exportData()" style="padding: 12px; background: #00ffcc; color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-download"></i> Export Data</button>
+        <button onclick="store.clearData()" style="padding: 12px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-trash"></i> Clear Data</button>
       </div>
     </div>
   </div>

@@ -38,7 +38,8 @@ class ForPhoneStore {
             { id: 15, name: 'Samsung Galaxy S24 Ultra', price: 699000, brand: 'samsung', image: 'samsung-s26-ultra.jpg', stock: 10 },
             { id: 16, name: 'Samsung Galaxy S24', price: 499000, brand: 'samsung', image: 'samsung-s26.jpg', stock: 18 },
         ];
-       this.listings = [];
+        this.cart = [];
+        this.listings = [];
         this.currentFilter = 'all';
 
         this.init();
@@ -64,19 +65,21 @@ class ForPhoneStore {
 
     loadCart() {
         const saved = localStorage.getItem('forphoneCart');
-        if (saved) this.cart = JSON.parse(saved);
+        if (saved) {
+            try {
+                this.cart = JSON.parse(saved);
+            } catch (e) {
+                this.cart = [];
+            }
+        } else {
+            this.cart = [];
+        }
         this.updateCartUI();
     }
-loadCart() {
-    try {
-        const savedCart = JSON.parse(localStorage.getItem("cart"));
-        this.cart = Array.isArray(savedCart) ? savedCart : [];
-    } catch (e) {
-        this.cart = [];
+
+    saveCart() {
+        localStorage.setItem('forphoneCart', JSON.stringify(this.cart));
     }
-}
-
-
 
     loadListings() {
         const saved = localStorage.getItem('forphoneListings');
@@ -96,27 +99,18 @@ loadCart() {
             }, 100);
         }
     }
-updateCartUI() {
-    const cart = Array.isArray(this.cart) ? this.cart : [];
 
-    const total = cart.length > 0
-        ? cart.reduce((sum, item) => sum + (item.price || 0), 0)
-        : 0;
-
-    const cartTotalEl = document.getElementById("cart-total");
-    if (cartTotalEl) {
-        cartTotalEl.textContent = "RWF " + total.toLocaleString();
+    updateCartUI() {
+        // Update cart count in header
+        const cartCount = this.cart.reduce((sum, item) => sum + item.qty, 0);
+        const cartCountEl = document.querySelector(this.selectors.cartCount);
+        if (cartCountEl) {
+            cartCountEl.textContent = cartCount;
+        }
+        
+        // Render cart modal items and totals
+        this.renderCartModal();
     }
-
-    const cartItemsEl = document.getElementById("cart-items");
-    if (cartItemsEl) {
-        cartItemsEl.innerHTML = cart.map(item => `
-            <li>${item.name} - RWF ${item.price.toLocaleString()}</li>
-        `).join("");
-    }
-}
-
-
 
     renderFilters() {
         const brands = ['all', ...new Set(this.products.map(p => p.brand))];
@@ -636,7 +630,7 @@ updateCartUI() {
         } else {
             this.cart[index].qty = newQty;
             this.saveCart();
-            this.renderCartModal();
+            this.updateCartUI();
         }
     }
 
@@ -646,7 +640,6 @@ updateCartUI() {
         else this.cart.push({ id, name, price, qty: 1 });
         this.saveCart();
         this.updateCartUI();
-        this.renderCartModal();
         this.showNotification(`✅ ${name} added to cart!`);
     }
 
@@ -655,7 +648,6 @@ updateCartUI() {
         this.cart.splice(index, 1);
         this.saveCart();
         this.updateCartUI();
-        this.renderCartModal();
         this.showNotification(`❌ ${itemName} removed from cart`);
     }
 
