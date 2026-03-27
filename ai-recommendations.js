@@ -285,8 +285,8 @@ class AIRecommendations {
 
         container.innerHTML = `
             <div class="recommendations-header">
-                <h3><i class="fas fa-sparkles"></i> Recommended For You</h3>
-                <p>Based on your browsing history</p>
+                <h3><i class="fas fa-sparkles"></i> Trusted Phone Picks</h3>
+                <p>Professional recommendations powered by your browsing and purchase intent, curated for value and reliability.</p>
             </div>
             <div class="recommendations-grid">
                 ${recommendations.map(product => this.renderRecommendationCard(product)).join('')}

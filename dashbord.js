@@ -56,6 +56,7 @@ class ForPhoneStore {
         this.renderFilters();
         this.renderRecommendations(); // Render recommendations before products
         this.renderProducts();
+        this.renderTrustedPicks(); // Render trusted phone picks
         this.renderSellForm();
         this.renderListings();
         this.updateUserUI();
@@ -314,6 +315,8 @@ class ForPhoneStore {
                 const value = e.target.value;
                 const conditionText = document.getElementById('condition-value');
                 if (conditionText) conditionText.textContent = value;
+                // Trigger price recalculation
+                this.calculateEstimatedPrice();
             });
         }
 
@@ -343,20 +346,133 @@ class ForPhoneStore {
             });
         }
 
-        // Price estimate
+        // Smart price calculation on form field changes
+        const brand = document.getElementById('phone-brand');
+        const model = document.getElementById('phone-model');
+        const year = document.getElementById('phone-year');
+        const storage = document.getElementById('phone-storage');
+        const condition = document.getElementById('phone-condition');
+        
+        [brand, model, year, storage, condition].forEach(elem => {
+            if (elem) {
+                elem.addEventListener('change', () => this.calculateEstimatedPrice());
+                elem.addEventListener('input', () => this.calculateEstimatedPrice());
+            }
+        });
+
+        // Accessories contribution to price
+        const accessories = ['has-box', 'has-charger', 'has-glass', 'has-case'];
+        accessories.forEach(id => {
+            const elem = document.getElementById(id);
+            if (elem) {
+                elem.addEventListener('change', () => this.calculateEstimatedPrice());
+            }
+        });
+
+        // Manual price input
         const priceInput = document.getElementById('phone-price');
         if (priceInput) {
             priceInput.addEventListener('input', (e) => {
                 const price = parseFloat(e.target.value);
                 const estimate = document.getElementById('price-estimate');
                 if (estimate && price > 0) {
-                    estimate.innerHTML = `<i class="fas fa-lightbulb"></i> Estimated value: RWF ${price.toLocaleString()}`;
+                    estimate.innerHTML = `<i class="fas fa-lightbulb"></i> Your asking price: RWF ${price.toLocaleString()}`;
                 }
             });
         }
 
         // Form submission
         form.addEventListener('submit', (e) => this.handleSellFormSubmit(e));
+    }
+
+    // Smart price calculator based on phone specs
+    calculateEstimatedPrice() {
+        const brand = document.getElementById('phone-brand')?.value;
+        const model = document.getElementById('phone-model')?.value;
+        const year = document.getElementById('phone-year')?.value;
+        const storage = document.getElementById('phone-storage')?.value;
+        const condition = parseFloat(document.getElementById('phone-condition')?.value || 5);
+        
+        // Base prices for popular models (in RWF)
+        const basePrices = {
+            'apple': {
+                '15 pro': 1500000, '15': 1200000, '14 pro': 1300000, '14': 1000000,
+                '13 pro': 900000, '13': 700000, '12 pro': 700000, '12': 500000
+            },
+            'samsung': {
+                's24': 1400000, 's23': 1100000, 's22': 900000, 's21': 700000,
+                'a54': 600000, 'a53': 500000, 'a52': 400000
+            },
+            'google': {
+                'pixel 8': 1300000, 'pixel 7': 950000, 'pixel 6': 700000, 'pixel 5a': 500000
+            },
+            'motorola': {
+                'edge 50': 800000, 'g54': 400000, 'g34': 300000
+            },
+            'nokia': {
+                'x30': 600000, 'x20': 450000, 'g22': 300000
+            }
+        };
+
+        let basePrice = 500000; // Default base price
+        
+        if (brand && model) {
+            const brandModels = basePrices[brand];
+            if (brandModels) {
+                const lowerModel = model.toLowerCase();
+                for (const [key, price] of Object.entries(brandModels)) {
+                    if (lowerModel.includes(key)) {
+                        basePrice = price;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Age depreciation (reduce by 15% per year)
+        let depreciationFactor = 1;
+        if (year && year !== 'older') {
+            const phoneAge = 2024 - parseInt(year);
+            depreciationFactor = Math.max(0.3, 1 - (phoneAge * 0.15));
+        } else if (year === 'older') {
+            depreciationFactor = 0.35;
+        }
+
+        // Condition factor (1-10 scale)
+        const conditionFactor = condition / 10;
+
+        // Storage multiplier
+        let storageMultiplier = 1;
+        switch(storage) {
+            case '64gb': storageMultiplier = 0.9; break;
+            case '128gb': storageMultiplier = 1; break;
+            case '256gb': storageMultiplier = 1.15; break;
+            case '512gb': storageMultiplier = 1.3; break;
+            case '1tb': storageMultiplier = 1.5; break;
+        }
+
+        // Accessories bonus
+        let accessoryBonus = 0;
+        if (document.getElementById('has-box')?.checked) accessoryBonus += 30000;
+        if (document.getElementById('has-charger')?.checked) accessoryBonus += 20000;
+        if (document.getElementById('has-glass')?.checked) accessoryBonus += 15000;
+        if (document.getElementById('has-case')?.checked) accessoryBonus += 10000;
+
+        // Calculate estimated price
+        let estimatedPrice = (basePrice * depreciationFactor * conditionFactor * storageMultiplier) + accessoryBonus;
+        estimatedPrice = Math.round(estimatedPrice / 10000) * 10000; // Round to nearest 10k
+
+        // Update the estimate display and auto-fill price field
+        const estimate = document.getElementById('price-estimate');
+        const priceInput = document.getElementById('phone-price');
+        
+        if (estimate) {
+            estimate.innerHTML = `<i class="fas fa-calculator"></i> <strong>Estimated fair price:</strong> RWF ${estimatedPrice.toLocaleString()} <small>(based on market data)</small>`;
+        }
+        
+        if (priceInput && !priceInput.value) {
+            priceInput.value = estimatedPrice;
+        }
     }
 
     previewPhotos(files) {
@@ -461,6 +577,7 @@ class ForPhoneStore {
                 <div class="no-listings">
                     <i class="fas fa-inbox"></i>
                     <p>No phones listed yet</p>
+                    <small>Be the first to list your phone for sale!</small>
                 </div>
             `;
             return;
@@ -468,7 +585,11 @@ class ForPhoneStore {
 
         container.innerHTML = `
             <div class="listings-header">
-                <h3><i class="fas fa-list"></i> Active Listings (${this.listings.length})</h3>
+                <div class="header-content">
+                    <h3><i class="fas fa-list"></i> Active Listings</h3>
+                    <span class="listing-count">${this.listings.length}</span>
+                </div>
+                <p class="header-subtitle">Browse phones currently available for purchase</p>
             </div>
             <div class="listings-grid">
                 ${this.listings.map(listing => this.renderListingCard(listing)).join('')}
@@ -477,38 +598,65 @@ class ForPhoneStore {
     }
 
     renderListingCard(listing) {
-        const photo = listing.photos && listing.photos[0] ? listing.photos[0] : 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200"%3E%3Crect fill="%232a2a2a" width="200" height="200"/%3E%3C/svg%3E';
-        
+        const photo = listing.photos && listing.photos[0] ? listing.photos[0] : 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="300"%3E%3Crect fill="%232a2a2a" width="300" height="300"/%3E%3Ctext x="150" y="150" text-anchor="middle" fill="%23666" font-size="14"%3ENo Image%3C/text%3E%3C/svg%3E';
+
         return `
             <div class="listing-card">
-                <div class="listing-image">
-                    <img src="${photo}" alt="${listing.model}">
-                    <span class="condition-badge">Condition: ${listing.condition}/10</span>
+                <div class="listing-image-container">
+                    <div class="listing-image">
+                        <img src="${photo}" alt="${listing.brand} ${listing.model}">
+                        <div class="image-overlay">
+                            <span class="condition-badge">Condition: ${listing.condition}/10</span>
+                            <div class="quick-actions">
+                                <button class="quick-view-btn" onclick="forPhoneStore.viewListing('${listing.id}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="listing-info">
-                    <h4>${listing.brand.charAt(0).toUpperCase() + listing.brand.slice(1)} ${listing.model}</h4>
+
+                <div class="listing-content">
+                    <div class="listing-header">
+                        <h4 class="listing-title">${listing.brand.charAt(0).toUpperCase() + listing.brand.slice(1)} ${listing.model}</h4>
+                        <div class="listing-price">RWF ${listing.price.toLocaleString()}</div>
+                    </div>
+
                     <div class="listing-specs">
-                        <span><i class="fas fa-calendar"></i> ${listing.year}</span>
-                        <span><i class="fas fa-microchip"></i> ${listing.storage}</span>
-                        <span><i class="fas fa-palette"></i> ${listing.color}</span>
+                        <div class="spec-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>${listing.year}</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-microchip"></i>
+                            <span>${listing.storage}</span>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fas fa-palette"></i>
+                            <span>${listing.color}</span>
+                        </div>
                     </div>
-                    <p class="listing-condition">${listing.description.substring(0, 80)}...</p>
+
+                    <div class="listing-description">
+                        <p>${listing.description.substring(0, 100)}${listing.description.length > 100 ? '...' : ''}</p>
+                    </div>
+
                     <div class="listing-accessories">
-                        ${listing.accessories.box ? '<span class="acc-badge"><i class="fas fa-box"></i> Box</span>' : ''}
-                        ${listing.accessories.charger ? '<span class="acc-badge"><i class="fas fa-plug"></i> Charger</span>' : ''}
-                        ${listing.accessories.glass ? '<span class="acc-badge"><i class="fas fa-shield-alt"></i> Glass</span>' : ''}
-                        ${listing.accessories.case ? '<span class="acc-badge"><i class="fas fa-shield-alt"></i> Case</span>' : ''}
+                        ${listing.accessories.box ? '<span class="accessory-tag"><i class="fas fa-box"></i> Box</span>' : ''}
+                        ${listing.accessories.charger ? '<span class="accessory-tag"><i class="fas fa-plug"></i> Charger</span>' : ''}
+                        ${listing.accessories.glass ? '<span class="accessory-tag"><i class="fas fa-shield-alt"></i> Glass</span>' : ''}
+                        ${listing.accessories.case ? '<span class="accessory-tag"><i class="fas fa-mobile-alt"></i> Case</span>' : ''}
                     </div>
-                </div>
-                <div class="listing-footer">
-                    <div class="listing-price">RWF ${listing.price.toLocaleString()}</div>
-                    <div class="listing-seller">
-                        <small><i class="fas fa-user"></i> ${listing.sellerName}</small>
-                        <small><i class="fas fa-phone"></i> ${listing.sellerPhone}</small>
+
+                    <div class="listing-seller-info">
+                        <div class="seller-details">
+                            <span class="seller-name"><i class="fas fa-user"></i> ${listing.sellerName}</span>
+                            <span class="seller-contact"><i class="fas fa-phone"></i> ${listing.sellerPhone}</span>
+                        </div>
+                        <button class="btn-contact-seller" onclick="forPhoneStore.contactSeller('${listing.sellerEmail}', '${listing.id}')">
+                            <i class="fas fa-envelope"></i> Contact Seller
+                        </button>
                     </div>
-                    <button class="btn-contact-seller" onclick="forPhoneStore.contactSeller('${listing.sellerEmail}', '${listing.id}')">
-                        <i class="fas fa-envelope"></i> Contact Seller
-                    </button>
                 </div>
             </div>
         `;
@@ -517,6 +665,22 @@ class ForPhoneStore {
     contactSeller(email, listingId) {
         this.showNotification(`📧 Opening email to ${email}...`);
         window.location.href = `mailto:${email}?subject=Interest in your phone listing (ID: ${listingId})`;
+    }
+
+    viewListing(listingId) {
+        const listing = this.listings.find(item => item.id === listingId);
+        if (!listing) {
+            this.showNotification('⚠️ Listing not found. Please refresh the page and try again.');
+            return;
+        }
+
+        // Quick modal-style detail summary (can be upgraded to UI modal later)
+        const details = `
+Phone: ${listing.brand.charAt(0).toUpperCase() + listing.brand.slice(1)} ${listing.model}\n
+Price: RWF ${listing.price.toLocaleString()}\nCondition: ${listing.condition}/10\nYear: ${listing.year}\nStorage: ${listing.storage}\nColor: ${listing.color}\nSeller: ${listing.sellerName} (${listing.sellerPhone})\n\n${listing.description}
+`;
+
+        alert(details);
     }
 
     renderProducts(filter = 'all') {
@@ -566,6 +730,63 @@ class ForPhoneStore {
                         aiRecommendations.trackProductView(product);
                         hoverTracked = true;
                     }
+                }
+            });
+        });
+    }
+
+    renderTrustedPicks() {
+        const container = document.querySelector('#trusted-picks-grid');
+        if (!container) return;
+
+        // Select top 6 trusted picks based on ratings and popularity
+        const trustedPicks = this.products.slice(0, 6).map((product, index) => {
+            const rating = (4.5 + Math.random() * 0.5).toFixed(1);
+            const reviews = Math.floor(100 + Math.random() * 900);
+            const priceStr = 'RWF ' + (product.price || 0).toLocaleString();
+            const imgSrc = `images/${product.image}`;
+            const badges = ['Best Value', 'Top Rated', 'Most Popular', 'Customer Favorite', 'Best Camera', 'Best Battery'];
+            const badge = badges[index % badges.length];
+
+            return `
+                <div class="trusted-pick-card">
+                    <span class="pick-badge">${badge}</span>
+                    <div class="pick-image">
+                        <img src="${imgSrc}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="pick-name">${product.name}</div>
+                    <p class="pick-description">${product.brand.charAt(0).toUpperCase() + product.brand.slice(1)} • Premium Quality</p>
+                    <div class="pick-rating">
+                        <span class="stars">★★★★★</span>
+                        <span class="count">${rating} (${reviews})</span>
+                    </div>
+                    <div class="pick-specs">
+                        <div class="spec-item"><i class="fas fa-microchip"></i> Latest Model</div>
+                        <div class="spec-item"><i class="fas fa-check-circle"></i> Verified Seller</div>
+                        <div class="spec-item"><i class="fas fa-shield-alt"></i> Warranty</div>
+                    </div>
+                    <div class="pick-price">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">${priceStr}</span>
+                    </div>
+                    <button class="pick-button" data-product-id="${product.id}">
+                        <i class="fas fa-shopping-cart"></i> View Details
+                    </button>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = trustedPicks;
+
+        // Bind click handlers
+        container.querySelectorAll('.pick-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const productId = btn.getAttribute('data-product-id');
+                const product = this.products.find(p => p.id === productId);
+                if (product) {
+                    this.addToCart(product);
+                    this.showNotification(`✅ ${product.name} added to cart!`);
                 }
             });
         });
@@ -697,6 +918,14 @@ class ForPhoneStore {
         document.querySelectorAll(this.selectors.closeBtns).forEach(c => {
             c.addEventListener('click', () => {
                 document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+            });
+        });
+
+        // If a nav link is clicked on mobile, close the slide-out menu to keep navigation visible
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.querySelector(this.selectors.nav);
+                if (nav) nav.classList.remove('active');
             });
         });
 

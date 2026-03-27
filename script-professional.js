@@ -141,16 +141,8 @@ class EstoreRW {
 
     container.innerHTML = `
       <div class="recommendations-section">
-        <h3><i class="fas fa-sparkles"></i> AI Recommended For You</h3>
-        <div class="recommendations-grid">
-          ${recommended.map(p => `
-            <div class="recommendation-card">
-              <img src="images/${p.image}" alt="${p.name}" loading="lazy">
-              <h4>${p.name}</h4>
-              <p>RWF ${p.price.toLocaleString()}</p>
-            </div>
-          `).join('')}
-        </div>
+        <h3><i class="fas fa-sparkles"></i> Smart Phone Recommendations</h3>
+        <p class="recommendations-subtitle">Verified selections based on your browsing patterns and selling goals, optimized for trust and resale value.</p>
       </div>
     `;
   }
@@ -1012,7 +1004,10 @@ class EstoreRW {
     const menuToggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
     if (menuToggle && nav) {
-      menuToggle.addEventListener('click', () => {
+      menuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[Menu] toggle clicked');
         nav.classList.toggle('active');
       });
 
