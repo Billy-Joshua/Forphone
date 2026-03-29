@@ -210,10 +210,10 @@ Caption:     0.8rem (Badges, labels)
 
 ---
 
-## 📱 Responsive Design Breakpoints
+## 📱 Responsive Design Breakpoints    
 
-| Breakpoint | Use Case | Layout |
-|-----------|----------|--------|
+| Breakpoint | Use Case | Layout |      
+|-----------|----------|--------|    
 | **320px - 480px** | Mobile phones | 1-column, touch-optimized |
 | **481px - 768px** | Tablets (portrait) | 2-column, adapted typography |
 | **769px - 1024px** | Tablets (landscape) | 3-column, normal spacing |
