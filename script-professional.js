@@ -1012,6 +1012,40 @@ class EstoreRW {
       });
     }
 
+    const headerElement = document.getElementById('header');
+    const sectionLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    const sectionTargets = document.querySelectorAll('section[id]');
+
+    const updateHeaderState = () => {
+      if (window.scrollY > 40) {
+        headerElement?.classList.add('scrolled');
+      } else {
+        headerElement?.classList.remove('scrolled');
+      }
+    };
+
+    const updateActiveNav = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 5;
+      sectionTargets.forEach(section => {
+        const rectTop = section.offsetTop;
+        const rectBottom = rectTop + section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (id && scrollPosition >= rectTop && scrollPosition < rectBottom) {
+          sectionLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      updateHeaderState();
+      updateActiveNav();
+    });
+
+    updateHeaderState();
+    updateActiveNav();
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
