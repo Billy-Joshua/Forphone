@@ -8,31 +8,31 @@ class EstoreRW {
     this.products = this.loadFromStorage('estore_products') || [
       // Premium Apple Devices
     
-  { id: 1, name: 'iPhone 17 Pro Max', price: 1299000, storage: '1TB', brand: 'apple', images: 'iphone17-pro-max.jpeg', badge: 'Latest', tags: ['premium', 'ai', 'futuristic'] },
-  { id: 2, name: 'iPhone 17 Pro', price: 1099000, storage: '512GB', brand: 'apple', images: 'iphone17-pro.jpeg', badge: 'Latest', tags: ['premium', 'ai'] },
-  { id: 3, name: 'iPhone 17', price: 899000, storage: '256GB', brand: 'apple', images: 'iphone17.jpeg', badge: 'Popular', tags: ['premium'] },
-  { id: 4, name: 'iPhone 16 Pro Max', price: 999000, storage: '512GB', brand: 'apple', images: 'iphone16-pro-max.jpeg', badge: 'Popular', tags: ['premium'] },
-  { id: 5, name: 'iPhone 16', price: 799000, storage: '256GB', brand: 'apple', images: 'iphone16.jpeg', badge: 'Sale', tags: ['affordable'] },
-  { id: 17, name: 'iPhone 15 Pro Max', price: 899000, storage: '512GB', brand: 'apple', images: 'iphone15-pro-max.jpeg', badge: 'Sale', tags: ['premium'] },
+  { id: 1, name: 'iPhone 17 Pro Max', price: 1299000, storage: '1TB', brand: 'apple', image: 'iphone17-pro-max.jpeg', badge: 'Latest', tags: ['premium', 'ai', 'futuristic'] },
+  { id: 2, name: 'iPhone 17 Pro', price: 1099000, storage: '512GB', brand: 'apple', image: 'iphone17-pro.jpeg', badge: 'Latest', tags: ['premium', 'ai'] },
+  { id: 3, name: 'iPhone 17', price: 899000, storage: '256GB', brand: 'apple', image: 'iphone17.jpeg', badge: 'Popular', tags: ['premium'] },
+  { id: 4, name: 'iPhone 16 Pro Max', price: 999000, storage: '512GB', brand: 'apple', image: 'iphone16-pro-max.jpeg', badge: 'Popular', tags: ['premium'] },
+  { id: 5, name: 'iPhone 16', price: 799000, storage: '256GB', brand: 'apple', image: 'iphone16.jpeg', badge: 'Sale', tags: ['affordable'] },
+  { id: 17, name: 'iPhone 15 Pro Max', price: 899000, storage: '512GB', brand: 'apple', image: 'iphone15-pro-max.jpeg', badge: 'Sale', tags: ['premium'] },
       // ... All products
       // Premium Samsung Devices
-      { id: 6, name: 'Samsung Galaxy S26 Ultra', price: 1399000, storage: '1TB', brand: 'samsung', images: 'samsung-s26-ultra.jpg', badge: 'Latest', tags: ['premium', 'ai'] },
-      { id: 7, name: 'Samsung Galaxy S26', price: 999000, storage: '512GB', brand: 'samsung', images: 'samsung-s26.jpg', badge: 'Popular', tags: ['premium'] },
-      { id: 8, name: 'Samsung Galaxy S25 Ultra', price: 899000, storage: '512GB', brand: 'samsung', images: 'samsung-s25-ultra.jpg', badge: 'Sale', tags: ['premium'] },
-      { id: 9, name: 'Samsung Galaxy A55', price: 599000, storage: '256GB', brand: 'samsung', images: 'samsung-a55.jpg', badge: 'Popular', tags: ['affordable'] },
+      { id: 6, name: 'Samsung Galaxy S26 Ultra', price: 1399000, storage: '1TB', brand: 'samsung', image: 'samsung-s26-ultra.jpg', badge: 'Latest', tags: ['premium', 'ai'] },
+      { id: 7, name: 'Samsung Galaxy S26', price: 999000, storage: '512GB', brand: 'samsung', image: 'samsung-s26.jpg', badge: 'Popular', tags: ['premium'] },
+      { id: 8, name: 'Samsung Galaxy S25 Ultra', price: 899000, storage: '512GB', brand: 'samsung', image: 'samsung-s25-ultra.jpg', badge: 'Sale', tags: ['premium'] },
+      { id: 9, name: 'Samsung Galaxy A55', price: 599000, storage: '256GB', brand: 'samsung', image: 'samsung-a55.jpg', badge: 'Popular', tags: ['affordable'] },
       
       // Google Pixel
-      { id: 10, name: 'Google Pixel 10 Pro', price: 1199000, storage: '512GB', brand: 'google', images: 'pixel10-pro.jpg', badge: 'Latest', tags: ['ai', 'camera'] },
-      { id: 11, name: 'Google Pixel 10', price: 899000, storage: '256GB', brand: 'google', images: 'pixel10.jpg', badge: 'Popular', tags: ['camera'] },
-      { id: 12, name: 'Google Pixel 9', price: 699000, storage: '256GB', brand: 'google', images: 'pixel9.jpg', badge: 'Sale', tags: ['affordable'] },
+      { id: 10, name: 'Google Pixel 10 Pro', price: 1199000, storage: '512GB', brand: 'google', image: 'pixel10-pro.jpg', badge: 'Latest', tags: ['ai', 'camera'] },
+      { id: 11, name: 'Google Pixel 10', price: 899000, storage: '256GB', brand: 'google', image: 'pixel10.jpg', badge: 'Popular', tags: ['camera'] },
+      { id: 12, name: 'Google Pixel 9', price: 699000, storage: '256GB', brand: 'google', image: 'pixel9.jpg', badge: 'Sale', tags: ['affordable'] },
       
       // OnePlus
-      { id: 13, name: 'OnePlus 13 Pro', price: 949000, storage: '512GB', brand: 'oneplus', images: 'oneplus13-pro.jpg', badge: 'Fast', tags: ['premium', 'performance'] },
-      { id: 14, name: 'OnePlus 13', price: 799000, storage: '256GB', brand: 'oneplus', images: 'oneplus13.jpg', badge: 'Popular', tags: ['performance'] },
+      { id: 13, name: 'OnePlus 13 Pro', price: 949000, storage: '512GB', brand: 'oneplus', image: 'oneplus13-pro.jpg', badge: 'Fast', tags: ['premium', 'performance'] },
+      { id: 14, name: 'OnePlus 13', price: 799000, storage: '256GB', brand: 'oneplus', image: 'oneplus13.jpg', badge: 'Popular', tags: ['performance'] },
       
       // Xiaomi
-      { id: 15, name: 'Xiaomi 14 Ultra', price: 849000, storage: '512GB', brand: 'xiaomi', images: 'xiaomi14-ultra.jpg', badge: 'Value', tags: ['camera', 'value'] },
-      { id: 16, name: 'Xiaomi 14', price: 699000, storage: '256GB', brand: 'xiaomi', images: 'xiaomi14.jpg', badge: 'Popular', tags: ['value'] },
+      { id: 15, name: 'Xiaomi 14 Ultra', price: 849000, storage: '512GB', brand: 'xiaomi', image: 'xiaomi14-ultra.jpg', badge: 'Value', tags: ['camera', 'value'] },
+      { id: 16, name: 'Xiaomi 14', price: 699000, storage: '256GB', brand: 'xiaomi', image: 'xiaomi14.jpg', badge: 'Popular', tags: ['value'] },
     ];
 
     // Initialize state
