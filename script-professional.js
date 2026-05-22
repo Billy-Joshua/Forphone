@@ -26,13 +26,7 @@ class EstoreRW {
       { id: 11, name: 'Google Pixel 10', price: 899000, storage: '256GB', brand: 'google', image: 'pixel10.jpg', badge: 'Popular', tags: ['camera'] },
       { id: 12, name: 'Google Pixel 9', price: 699000, storage: '256GB', brand: 'google', image: 'pixel9.jpg', badge: 'Sale', tags: ['affordable'] },
       
-      // OnePlus
-      { id: 13, name: 'OnePlus 13 Pro', price: 949000, storage: '512GB', brand: 'oneplus', image: 'oneplus13-pro.jpg', badge: 'Fast', tags: ['premium', 'performance'] },
-      { id: 14, name: 'OnePlus 13', price: 799000, storage: '256GB', brand: 'oneplus', image: 'oneplus13.jpg', badge: 'Popular', tags: ['performance'] },
-      
-      // Xiaomi
-      { id: 15, name: 'Xiaomi 14 Ultra', price: 849000, storage: '512GB', brand: 'xiaomi', image: 'xiaomi14-ultra.jpg', badge: 'Value', tags: ['camera', 'value'] },
-      { id: 16, name: 'Xiaomi 14', price: 699000, storage: '256GB', brand: 'xiaomi', image: 'xiaomi14.jpg', badge: 'Popular', tags: ['value'] },
+     
     ];
 
     // Initialize state
