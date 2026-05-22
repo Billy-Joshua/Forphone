@@ -45,9 +45,9 @@
           <span id="cart-count">0</span>
         </a>
         <a href="#" id="login-btn" class="nav-link"><i class="fas fa-user"></i> Login</a>
-        <button id="dark-mode-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+        <button id="dark-mode-toggle" class="icon-btn" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
       </nav>
-      <button class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></button>
+      <button class="menu-toggle" id="menu-toggle" title="Open menu"><i class="fas fa-bars"></i></button>
     </div>
   </header>
 
@@ -116,50 +116,50 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="section" style="background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(255,0,255,0.1) 100%);">
+  <section class="section testimonials-section">
     <div class="container">
       <h2 class="section-title">What Our Customers Say</h2>
       <div class="testimonials-grid">
         <article class="testimonial" role="article">
-          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <div style="width: 50px; height: 50px; border-radius: 50%; background: #00ffcc; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">JP</div>
+          <div class="testimonial-author-row">
+            <div class="testimonial-avatar accent-green">JP</div>
             <div>
-              <h4 style="color: #00ffcc;">Joshua</h4>
-              <p style="font-size: 0.9rem; color: #aaa;">Kigali</p>
+              <h4 class="testimonial-author-name accent-green">Joshua</h4>
+              <p class="testimonial-author-location">Kigali</p>
             </div>
           </div>
-          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+          <p class="testimonial-text">
             "EstoreRW is fantastic! Got my iPhone 17 Pro delivered within 48 hours. Crystal clear communication and fair pricing!"
           </p>
-          <div style="color: #ffff00;">★★★★★</div>
+          <div class="testimonial-rating">★★★★★</div>
         </article>
 
         <article class="testimonial" role="article">
-          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <div style="width: 50px; height: 50px; border-radius: 50%; background: #ff00ff; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">MC</div>
+          <div class="testimonial-author-row">
+            <div class="testimonial-avatar accent-magenta">MC</div>
             <div>
-              <h4 style="color: #ff00ff;">Iradukunda nelly</h4>
-              <p style="font-size: 0.9rem; color: #aaa;">Butare</p>
+              <h4 class="testimonial-author-name accent-magenta">Iradukunda nelly</h4>
+              <p class="testimonial-author-location">Butare</p>
             </div>
           </div>
-          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+          <p class="testimonial-text">
             "Sold my old phone and got paid via Mobile Money instantly. The whole process was seamless and transparent."
           </p>
-          <div style="color: #ffff00;">★★★★★</div>
+          <div class="testimonial-rating">★★★★★</div>
         </article>
 
         <article class="testimonial" role="article">
-          <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <div style="width: 50px; height: 50px; border-radius: 50%; background: #00ffcc; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold;">DM</div>
+          <div class="testimonial-author-row">
+            <div class="testimonial-avatar accent-green">DM</div>
             <div>
-              <h4 style="color: #00ffcc;">Daniel Onjah</h4>
-              <p style="font-size: 0.9rem; color: #aaa;">legos</p>
+              <h4 class="testimonial-author-name accent-green">Daniel Onjah</h4>
+              <p class="testimonial-author-location">legos</p>
             </div>
           </div>
-          <p style="font-style: italic; margin-bottom: 1rem; line-height: 1.6;">
+          <p class="testimonial-text">
             "Best prices compared to other stores. Customer service team is responsive and helpful. Highly recommended!"
           </p>
-          <div style="color: #ffff00;">★★★★★</div>
+          <div class="testimonial-rating">★★★★★</div>
         </article>
       </div>
     </div>
@@ -170,41 +170,41 @@
     <div class="container text-center">
       <h2 class="section-title">Get in Touch</h2>
       <div class="contact-links">
-        <a href="mailto:billyjoshuaishimwe@corenestconsulting.com"><i class="fas fa-envelope"></i> estore@gmail.com</a>
-        <a href="https://wa.me/250788544811" target="_blank"><i class="fab fa-whatsapp"></i> +250 788544811</a>
-        <a href="https://www.instagram.com/_.fp99?igsh=bXNsYWp1Z2tqMTky&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i> @estore.rw</a>
+        <a href="mailto:billyjoshuaishimwe@corenestconsulting.com"><i class="fas fa-envelope"></i> estore.rw@gmail.com</a>
+        <a href="https://wa.me/250788544811" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> +250 788544811</a>
+        <a href="https://www.instagram.com/_.fp99?igsh=bXNsYWp1Z2tqMTky&utm_source=qr" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> @estore.rw</a>
       </div>
     </div>
   </section>
 
   <!-- FAQ SECTION -->
-  <section class="section" style="background: rgba(0,255,204,0.05);">
-    <div class="container" style="max-width: 800px;">
+  <section class="section faq-section">
+    <div class="container faq-container">
       <h2 class="section-title">Frequently Asked Questions</h2>
-      <div style="display: grid; gap: 1.5rem;">
-        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
-          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+      <div class="faq-grid">
+        <details class="faq-card">
+          <summary class="faq-summary">
             How long does delivery take? <i class="fas fa-chevron-down"></i>
           </summary>
-          <p style="margin-top: 1rem; color: #cccccc;">Standard delivery within Kigali takes 24-48 hours. Other provinces take 3-5 business days.</p>
+          <p class="faq-answer">Standard delivery within Kigali takes 24-48 hours. Other provinces take 3-5 business days.</p>
         </details>
-        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
-          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+        <details class="faq-card">
+          <summary class="faq-summary">
             What payment methods do you accept? <i class="fas fa-chevron-down"></i>
           </summary>
-          <p style="margin-top: 1rem; color: #cccccc;">We accept Mobile Money (MTN, Airtel), Bank transfers, and Cash on Delivery.</p>
+          <p class="faq-answer">We accept Mobile Money (MTN, Airtel), Bank transfers, and Cash on Delivery.</p>
         </details>
-        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
-          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+        <details class="faq-card">
+          <summary class="faq-summary">
             Do you offer warranty? <i class="fas fa-chevron-down"></i>
           </summary>
-          <p style="margin-top: 1rem; color: #cccccc;">All phones come with a 30-day money-back guarantee. Extended warranties available.</p>
+          <p class="faq-answer">All phones come with a 30-day money-back guarantee. Extended warranties available.</p>
         </details>
-        <details style="padding: 1rem; border: 1px solid #00ffcc; border-radius: 12px; cursor: pointer;">
-          <summary style="font-weight: 600; color: #00ffcc; display: flex; justify-content: space-between; align-items: center;">
+        <details class="faq-card">
+          <summary class="faq-summary">
             How do I sell my phone? <i class="fas fa-chevron-down"></i>
           </summary>
-          <p style="margin-top: 1rem; color: #cccccc;">Fill out the "Sell Your Phone" form with your phone's details. We'll give you an instant quote. If you accept, we handle pickup and payment.</p>
+          <p class="faq-answer">Fill out the "Sell Your Phone" form with your phone's details. We'll give you an instant quote. If you accept, we handle pickup and payment.</p>
         </details>
       </div>
     </div>
@@ -247,7 +247,7 @@
               <span>Shipping:</span>
               <span>RWF <span id="shipping">0.00</span></span>
             </div>
-            <div class="summary-row discount" id="discount-row" style="display: none;">
+            <div class="summary-row discount" id="discount-row">
               <span>Discount:</span>
               <span>-RWF <span id="discount-amount">0.00</span></span>
             </div>
@@ -733,57 +733,57 @@
 
   <!-- ADMIN DASHBOARD MODAL -->
   <div id="admin-modal" class="modal">
-    <div class="modal-content" style="max-width: 900px; max-height: 90vh; overflow-y: auto;">
+    <div class="modal-content admin-modal-content">
       <span class="close">&times;</span>
       <h2><i class="fas fa-cog"></i> Admin Dashboard</h2>
       
-      <div class="admin-info" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
-        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
-          <div class="admin-stat-value" id="admin-products" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">16</div>
-          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Total Products</div>
+      <div class="admin-info">
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-products">16</div>
+          <div class="admin-stat-label">Total Products</div>
         </div>
-        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
-          <div class="admin-stat-value" id="admin-cart-count" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">0</div>
-          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Items in Cart</div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-cart-count">0</div>
+          <div class="admin-stat-label">Items in Cart</div>
         </div>
-        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
-          <div class="admin-stat-value" id="admin-users" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">1</div>
-          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Registered Users</div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-users">1</div>
+          <div class="admin-stat-label">Registered Users</div>
         </div>
-        <div class="admin-stat" style="padding: 1.5rem; background: rgba(74, 158, 255, 0.1); border-radius: 12px; text-align: center;">
-          <div class="admin-stat-value" id="admin-brands" style="font-size: 2rem; color: #4a9eff; font-weight: bold;">5</div>
-          <div class="admin-stat-label" style="color: #a0a0a0; margin-top: 0.5rem;">Active Brands</div>
+        <div class="admin-stat">
+          <div class="admin-stat-value" id="admin-brands">5</div>
+          <div class="admin-stat-label">Active Brands</div>
         </div>
       </div>
 
-      <div class="admin-status" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
-        <h4 style="color: #d0d0d0; margin-bottom: 1rem;"><i class="fas fa-chart-line"></i> System Status</h4>
-        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
-          <span style="color: #a0a0a0;">Server Status:</span>
-          <span style="color: #00ffcc; font-weight: 600;">✓ Online</span>
+      <div class="admin-status">
+        <h4><i class="fas fa-chart-line"></i> System Status</h4>
+        <div class="admin-status-item">
+          <span class="admin-status-label">Server Status:</span>
+          <span class="admin-status-value">✓ Online</span>
         </div>
-        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
-          <span style="color: #a0a0a0;">Database:</span>
-          <span style="color: #00ffcc; font-weight: 600;">✓ Connected</span>
+        <div class="admin-status-item">
+          <span class="admin-status-label">Database:</span>
+          <span class="admin-status-value">✓ Connected</span>
         </div>
-        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #2a2a2a;">
-          <span style="color: #a0a0a0;">Estimated Revenue:</span>
-          <span style="color: #00ffcc; font-weight: 600;" id="admin-revenue">RWF 0</span>
+        <div class="admin-status-item">
+          <span class="admin-status-label">Estimated Revenue:</span>
+          <span id="admin-revenue" class="admin-status-value">RWF 0</span>
         </div>
-        <div class="admin-status-item" style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
-          <span style="color: #a0a0a0;">Last Updated:</span>
-          <span id="admin-update-time" style="color: #00ffcc; font-weight: 600;">Just now</span>
+        <div class="admin-status-item">
+          <span class="admin-status-label">Last Updated:</span>
+          <span id="admin-update-time" class="admin-status-value">Just now</span>
         </div>
       </div>
 
       <!-- Add New Product Form -->
-      <div class="admin-add-product" style="background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
-        <h4 style="color: #d0d0d0; margin-bottom: 1rem;"><i class="fas fa-plus"></i> Add New Product</h4>
-        <div class="admin-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <input type="text" id="admin-product-name" placeholder="Product Name" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
-          <input type="number" id="admin-product-price" placeholder="Price (RWF)" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
-          <input type="text" id="admin-product-storage" placeholder="Storage" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
-          <select id="admin-product-brand" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
+      <div class="admin-add-product">
+        <h4><i class="fas fa-plus"></i> Add New Product</h4>
+        <div class="admin-form">
+          <input class="admin-input" type="text" id="admin-product-name" placeholder="Product Name">
+          <input class="admin-input" type="number" id="admin-product-price" placeholder="Price (RWF)">
+          <input class="admin-input" type="text" id="admin-product-storage" placeholder="Storage">
+          <select class="admin-input" id="admin-product-brand" aria-label="Product brand">
             <option value="">Select Brand</option>
             <option value="apple">Apple</option>
             <option value="samsung">Samsung</option>
@@ -791,27 +791,27 @@
             <option value="oneplus">OnePlus</option>
             <option value="xiaomi">Xiaomi</option>
           </select>
-          <input type="text" id="admin-product-image" placeholder="Image filename" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
-          <input type="text" id="admin-product-badge" placeholder="Badge (e.g., Latest)" style="padding: 10px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; color: #d0d0d0;">
-          <button onclick="store.addProductFromForm()" style="grid-column: 1 / -1; padding: 12px; background: #4a9eff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+          <input class="admin-input" type="text" id="admin-product-image" placeholder="Image filename">
+          <input class="admin-input" type="text" id="admin-product-badge" placeholder="Badge (e.g., Latest)">
+          <button type="button" onclick="store.addProductFromForm()" class="admin-form-button">
             <i class="fas fa-plus"></i> Add Product
           </button>
         </div>
       </div>
 
       <!-- Products List -->
-      <div id="admin-products-list" style="margin-bottom: 2rem;"></div>
+      <div id="admin-products-list" class="admin-products-list"></div>
 
-      <div class="admin-actions" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-        <button onclick="store.updateStats()" style="padding: 12px; background: #4a9eff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-sync"></i> Refresh Stats</button>
-        <button onclick="store.exportData()" style="padding: 12px; background: #00ffcc; color: #000; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-download"></i> Export Data</button>
-        <button onclick="store.clearData()" style="padding: 12px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fas fa-trash"></i> Clear Data</button>
+      <div class="admin-actions">
+        <button onclick="store.updateStats()" class="btn-refresh"><i class="fas fa-sync"></i> Refresh Stats</button>
+        <button onclick="store.exportData()" class="btn-export"><i class="fas fa-download"></i> Export Data</button>
+        <button onclick="store.clearData()" class="btn-clear"><i class="fas fa-trash"></i> Clear Data</button>
       </div>
     </div>
   </div>
 
   <!-- WhatsApp Chat Button -->
-  <a href="https://wa.me/250788544811?text=Hi%20EstoreRW%2C%20I%20have%20a%20question%20about..." class="whatsapp-btn" target="_blank">
+  <a href="https://wa.me/250788544811?text=Hi%20EstoreRW%2C%20I%20have%20a%20question%20about..." class="whatsapp-btn" target="_blank" rel="noopener" title="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 

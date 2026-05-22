@@ -203,6 +203,7 @@ body.dark-mode { background:#0a0a0a; color:#d0d0d0; }
 }
 
 .summary-row.discount {
+  display: none;
   color: #00ffcc;
   font-weight: 600;
 }
@@ -260,10 +261,133 @@ body.dark-mode { background:#0a0a0a; color:#d0d0d0; }
   box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
 }
 
-.btn-promo:active {
-  transform: translateY(0);
+.testimonials-section {
+  background: linear-gradient(135deg, rgba(0,255,204,0.1) 0%, rgba(255,0,255,0.1) 100%);
 }
+.testimonial-author-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.testimonial-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+}
+.testimonial-avatar.accent-green { background: #00ffcc; }
+.testimonial-avatar.accent-magenta { background: #ff00ff; }
+.testimonial-author-name { font-size: 1rem; margin: 0; }
+.testimonial-author-name.accent-green { color: #00ffcc; }
+.testimonial-author-name.accent-magenta { color: #ff00ff; }
+.testimonial-author-location { font-size: 0.9rem; color: #aaa; margin: 0; }
+.testimonial-text { font-style: italic; margin-bottom: 1rem; line-height: 1.6; color: #d0d0d0; }
+.testimonial-rating { color: #ffff00; }
 
+.faq-section { background: rgba(0,255,204,0.05); }
+.faq-container { max-width: 800px; }
+.faq-grid { display: grid; gap: 1.5rem; }
+.faq-card {
+  padding: 1rem;
+  border: 1px solid #00ffcc;
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+}
+.faq-summary {
+  font-weight: 600;
+  color: #00ffcc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.faq-answer { margin-top: 1rem; color: #cccccc; }
+
+.modal-content.admin-modal-content {
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.admin-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.admin-stat {
+  padding: 1.5rem;
+  background: rgba(74, 158, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+.admin-stat-value {
+  font-size: 2rem;
+  color: #4a9eff;
+  font-weight: bold;
+}
+.admin-stat-label { color: #a0a0a0; margin-top: 0.5rem; }
+
+.admin-status {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+.admin-status-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2a2a2a;
+}
+.admin-status-item:last-child { border-bottom: none; }
+.admin-status-label { color: #a0a0a0; }
+.admin-status-value { color: #00ffcc; font-weight: 600; }
+
+.admin-add-product {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+.admin-add-product h4 { color: #d0d0d0; margin-bottom: 1rem; }
+.admin-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.admin-input {
+  padding: 10px;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  color: #d0d0d0;
+}
+.admin-form-button {
+  grid-column: 1 / -1;
+  padding: 12px;
+  background: #4a9eff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.admin-form-button:hover { transform: translateY(-2px); }
+.admin-actions button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.admin-actions .btn-refresh { background: #4a9eff; color: white; }
+.admin-actions .btn-export { background: #00ffcc; color: #000; }
+.admin-actions .btn-clear { background: #ef4444; color: white; }
+.admin-actions button:hover { transform: translateY(-2px); }
+.admin-products-list { margin-bottom: 2rem; }
 /* Form Buttons */
 form button[type="submit"] {
   width: 100%;
