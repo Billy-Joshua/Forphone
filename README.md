@@ -294,10 +294,7 @@ All views tested on real devices (iPhone 12, Samsung S21, iPad Air, MacBook).
 ### 1. Brand Customization
 **File**: `index.html` (end of file)
 ```html
-<!-- Update contact information -->
-<a href="mailto:your-email@estore.rw">Your Email</a>
-<a href="https://wa.me/250XXXXXXXXX">+250 XX XXX XXXX</a>
-<a href="https://instagram.com/your-handle">@your-handle</a>
+
 ```
 
 ### 2. Add/Edit Products
