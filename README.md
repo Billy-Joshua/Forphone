@@ -1,4 +1,4 @@
-# EstoreRW - Enterprise-Grade E-Commerce Platform
+# Estore.rw - Enterprise-Grade E-Commerce Platform
 
 ##  Production-Ready Mobile Marketplace for Rwanda
 
