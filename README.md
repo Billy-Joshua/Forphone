@@ -1066,7 +1066,7 @@ If this helped you, consider:
 
 → See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for complete deployment instructions.
 
----
+
 
 *Built with ❤️ for Rwanda's tech ecosystem*
 
